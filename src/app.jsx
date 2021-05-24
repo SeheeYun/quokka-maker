@@ -1,10 +1,13 @@
+import { useEffect } from 'react';
 import './app.css';
-import firebaseInit from './firebaseInit';
+import startFirebaseUI from './firebaseInit';
 
 function App() {
-  console.log(firebaseInit);
+  useEffect(() => {
+    startFirebaseUI('#firebaseui');
+  }, []);
 
-  return <h1>Hello world!</h1>;
+  return <div id="firebaseui"></div>;
 }
 
 export default App;

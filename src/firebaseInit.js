@@ -1,4 +1,6 @@
 import firebase from 'firebase/app';
+import * as firebaseui from 'firebaseui';
+import 'firebaseui/dist/firebaseui.css';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -10,4 +12,19 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASREMENT_ID,
 };
 
-export default firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+
+const ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+const startFirebaseUI = elementId => {
+  ui.start(elementId, {
+    signInSuccessUrl: '/',
+    signInOptions: [
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    ],
+    // Other config options...
+  });
+};
+
+export default startFirebaseUI;
