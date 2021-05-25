@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import React, { useEffect } from 'react';
 import startFirebaseUI from '../../firebaseInit';
 import styles from './login.module.css';
@@ -15,4 +16,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default observer(Login);

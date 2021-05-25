@@ -1,0 +1,21 @@
+.div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(218, 198, 171);
+  user-select: none;
+  /* cursor: grab; */
+}
+
+.btn {
+  border-style: none;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  transform: translateY(-40px);
+  font-size: 40px;
+  z-index: 1;
+}

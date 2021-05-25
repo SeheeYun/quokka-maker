@@ -1,17 +1,18 @@
+import { inject, observer } from 'mobx-react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './app.css';
 import Header from './components/header/header';
-import Home from './components/home/home';
-import Login from './components/login/login';
+import Home from './pages/home/home';
+import Login from './pages/login/login';
 
-function App() {
+function App({ store }) {
   return (
     <>
       <Header />
       <BrowserRouter>
         <Switch>
           <Route path="/" exact>
-            <Home />
+            <Home store={store.homeStore} />
           </Route>
           <Route path="/login">
             <Login />
@@ -22,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default inject('store')(observer(App));
