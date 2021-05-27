@@ -1,17 +1,1 @@
-html {
-  height: 100%;
-}
 
-body {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#root {
-  width: 800px;
-  height: 90vh;
-  overflow: hidden;
-  background-color: antiquewhite;
-}

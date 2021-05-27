@@ -1,21 +1,33 @@
 .div {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  margin-top: 80px;
   position: relative;
   display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(218, 198, 171);
   user-select: none;
-  /* cursor: grab; */
+  cursor: grab;
+  background-color: rgba(175, 57, 42, 0.8);
 }
 
 .btn {
+  align-self: center;
+  position: absolute;
+  bottom: 80px;
   border-style: none;
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  transform: translateY(-40px);
   font-size: 40px;
   z-index: 1;
+  background-color: #666666;
 }

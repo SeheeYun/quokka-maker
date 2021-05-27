@@ -8,7 +8,7 @@ const Mood = ({ store: { rotate, isToggleClick }, mood }) => (
     style={
       isToggleClick
         ? { transform: `translate(${mood.x}px,${mood.y}px)` }
-        : { transform: 'translate(0px,-40px)' }
+        : { transform: 'translate(0,0)' }
     }
   >
     <button

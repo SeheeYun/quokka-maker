@@ -1,6 +1,7 @@
 .moods {
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 110px;
 }

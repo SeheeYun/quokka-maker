@@ -1,8 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap');
+
+:root {
+  --bg-color: #fff7e7;
+  --blue-color: rgb(143, 182, 255);
+  --box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+html {
+  font-size: 24px;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Gaegu', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,4 +36,16 @@ a {
 ul,
 ol {
   list-style: none;
+}
+
+button {
+  background: none;
+  border-style: none;
+}
+
+#root {
+  background-color: var(--bg-color);
+  background-image: url('/src/line.svg');
+  padding: 0 16px;
+  overflow: hidden;
 }
