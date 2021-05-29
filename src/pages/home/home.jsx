@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Moods from '../../components/moods/moods';
 import HomeCardList from '../../components/home-card-list/homeCardList';
 import styles from './home.module.css';
+import AddRoundedIcon from '@material-ui/icons/AddRounded';
 
 const Home = ({ store }) => {
   useEffect(() => {
@@ -16,7 +17,7 @@ const Home = ({ store }) => {
   return (
     <div className={styles.div}>
       <button className={styles.btn} onClick={onClick}>
-        +
+        <AddRoundedIcon />
       </button>
       {store.isMoods && (
         <div
