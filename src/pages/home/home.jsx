@@ -17,7 +17,7 @@ const Home = ({ store }) => {
   return (
     <div className={styles.div}>
       <button className={styles.btn} onClick={onClick}>
-        <AddRoundedIcon />
+        <AddRoundedIcon fontSize="large" style={{ color: 'var(--bg-color)' }} />
       </button>
       {store.isMoods && (
         <div

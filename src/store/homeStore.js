@@ -174,7 +174,7 @@ class HomeStore {
       this.toggleClick();
       setTimeout(() => {
         this.isDisableClick = false;
-      }, 200);
+      }, 300);
     }
   };
 }

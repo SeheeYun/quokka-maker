@@ -15,8 +15,7 @@
   display: flex;
   justify-content: center;
   user-select: none;
-  cursor: grab;
-  background-color: rgba(175, 57, 42, 0.8);
+  /* cursor: grab; */
 }
 
 .btn {
@@ -27,7 +26,8 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  font-size: 40px;
   z-index: 1;
-  background-color: #666666;
+  background-color: #303030;
+  padding-top: 1px;
+  transition: cubic-bezier(0.23, 1, 0.32, 1);
 }

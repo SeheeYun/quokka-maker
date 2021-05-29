@@ -2,7 +2,6 @@
   width: 90px;
   height: 90px;
   position: absolute;
-  transition: transform 200ms ease-in-out;
   user-select: none;
 }
 
@@ -15,5 +14,4 @@
 
 .btn > img {
   height: 100%;
-  /* filter: drop-shadow(5px 7px 3px rgba(128, 128, 138, 0.445)); */
 }
