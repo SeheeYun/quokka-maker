@@ -1,12 +1,10 @@
 import { observer } from 'mobx-react';
 import React from 'react';
 import styles from './header.module.css';
-import {
-  ExitToAppRoundedIcon,
-  MeetingRoomRoundedIcon,
-  ArrowBackIosRoundedIcon,
-  DoneRoundedIcon,
-} from '@material-ui/icons';
+import DoneRoundedIcon from '@material-ui/icons/DoneRounded';
+import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
+import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
+import MeetingRoomRoundedIcon from '@material-ui/icons/MeetingRoomRounded';
 
 const Header = ({ page }) => {
   return page ? (
@@ -20,7 +18,7 @@ const Header = ({ page }) => {
   ) : (
     <header className={styles.header}>
       <button>
-        <ArrowBackIosRoundedIcon />
+        <ArrowBackIosRoundedIcon fontSize="small" />
       </button>
       <div>January 2021</div>
       <button>

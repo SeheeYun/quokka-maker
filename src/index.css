@@ -4,6 +4,19 @@
   --bg-color: #fff7e7;
   --blue-color: rgb(143, 182, 255);
   --box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  --add-btn-size: 64px;
+  --add-btn-bottom: 40px;
+  --moods-bottom: 55px;
+  --mood-btn-size: 75px;
+}
+
+@media screen and (max-width: 767px) {
+  :root {
+    --add-btn-size: 50px;
+    --add-btn-bottom: 25px;
+    --moods-bottom: 40px;
+    --mood-btn-size: 58px;
+  }
 }
 
 html {

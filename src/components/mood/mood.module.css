@@ -1,6 +1,6 @@
 .mood {
-  width: 90px;
-  height: 90px;
+  width: var(--mood-btn-size);
+  height: var(--mood-btn-size);
   position: absolute;
   user-select: none;
 }

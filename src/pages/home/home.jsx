@@ -4,20 +4,25 @@ import Moods from '../../components/moods/moods';
 import HomeCardList from '../../components/home-card-list/homeCardList';
 import styles from './home.module.css';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
+import useMatchMedia from '../../hooks/useMatchMedia';
 
 const Home = ({ store }) => {
+  const rotate = store.isMoods ? styles.rotate : '';
+
+  const { isMatches } = useMatchMedia('767');
+
   useEffect(() => {
-    store.translateMoods();
-  }, []);
+    store.translateMoods(isMatches);
+  }, [isMatches]);
 
   const onClick = () => {
-    store.DisableClick();
+    store.disableClick();
   };
 
   return (
     <div className={styles.div}>
-      <button className={styles.btn} onClick={onClick}>
-        <AddRoundedIcon fontSize="large" style={{ color: 'var(--bg-color)' }} />
+      <button className={`${styles.btn} ${rotate}`} onClick={onClick}>
+        <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
       </button>
       {store.isMoods && (
         <div

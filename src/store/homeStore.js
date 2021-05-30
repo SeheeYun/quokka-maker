@@ -63,16 +63,15 @@ class HomeStore {
   }
 
   @action
-  translateMoods = () => {
+  translateMoods = isMatches => {
+    const radius = isMatches ? 100 : 130;
+
     const moodsIndex = this._moods.length;
     const PI2 = Math.PI * 2;
     const angle = PI2 / moodsIndex;
 
-    const radius = 150;
-
     this._moods = this._moods.map(mood => {
       const i = this._moods.indexOf(mood);
-
       const x = radius * Math.cos(angle * i);
       const y = radius * Math.sin(angle * i);
 
@@ -116,19 +115,6 @@ class HomeStore {
   setRotate = () => {
     this.moveX *= 0.82;
     this.rotate += this.moveX * 0.008;
-    // if (this.rotate >= 0) {
-    //   setTimeout(() => {
-    //     runInAction(() => {
-    //       this.rotate = 0;
-    //     });
-    //   });
-    // } else if (this.rotate <= -2.35619) {
-    //   setTimeout(() => {
-    //     runInAction(() => {
-    //       this.rotate = -2.35619;
-    //     });
-    //   });
-    // }
   };
 
   @observable
@@ -166,7 +152,7 @@ class HomeStore {
   isDisableClick = false;
 
   @action
-  DisableClick = () => {
+  disableClick = () => {
     if (this.isDisableClick) {
       return;
     } else {
