@@ -1,8 +1,11 @@
 import { observer } from 'mobx-react';
 import React from 'react';
+import { useLocation } from 'react-router';
 import styles from './cardMaker.module.css';
 
-const CardList = props => {
+const CardMaker = props => {
+  const location = useLocation();
+
   return (
     <ul className={styles.ul}>
       <li className={styles.li}>
@@ -10,10 +13,10 @@ const CardList = props => {
           <div className={styles.date}>날짜</div>
           <img
             draggable="false"
-            src={process.env.PUBLIC_URL + '/images/mood1.svg'}
+            src={process.env.PUBLIC_URL + location.state.mood.bgImage}
             alt="img"
           />
-          <p className={styles.p}>기분 최고!</p>
+          <p className={styles.p}>{location.state.mood.description}</p>
           <div className={styles.photo_wrap}>
             <div className={styles.photo}>
               <img
@@ -33,4 +36,4 @@ const CardList = props => {
   );
 };
 
-export default observer(CardList);
+export default observer(CardMaker);

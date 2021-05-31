@@ -25,7 +25,6 @@ function App({ store }) {
             <CardList />
           </Route>
           <Route path="/card-maker">
-            <Header />
             <CardMaker />
           </Route>
         </Switch>

@@ -49,9 +49,16 @@
   padding: 0 5px;
   margin-top: 20px;
 }
-p:last-child {
-  font-size: 0.833rem;
-  font-weight: 700;
-  text-align: center;
+
+.text {
+  height: 1rem;
+  width: 100%;
   margin-top: 30px;
+  font-family: inherit;
+  font-size: 0.833rem;
+  text-align: center;
+  /* border-style: none; */
+  outline: none;
+  resize: none;
+  overflow: hidden;
 }

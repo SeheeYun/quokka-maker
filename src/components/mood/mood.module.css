@@ -12,6 +12,10 @@
   background: none;
 }
 
-.btn > img {
+.btn > a {
+  display: block;
+  height: 100%;
+}
+.btn img {
   height: 100%;
 }
