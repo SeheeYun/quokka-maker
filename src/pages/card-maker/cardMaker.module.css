@@ -7,12 +7,6 @@
   padding-bottom: 20px;
 }
 
-.date {
-  align-self: flex-start;
-  position: absolute;
-  top: 0;
-}
-
 .div {
   position: relative;
   padding: 40px 20px;
@@ -50,15 +44,59 @@
   margin-top: 20px;
 }
 
-.text {
+textarea {
   height: 1rem;
   width: 100%;
   margin-top: 30px;
   font-family: inherit;
   font-size: 0.833rem;
   text-align: center;
-  /* border-style: none; */
+  border-style: none;
   outline: none;
   resize: none;
-  overflow: hidden;
+}
+
+.date {
+  align-self: flex-start;
+  position: absolute;
+  top: 20px;
+  width: 36px;
+  font-size: 20px;
+  border-style: none;
+  border-bottom: solid 2px;
+  text-align: center;
+  padding: 3px;
+}
+input[type='date']::-webkit-datetime-edit-text {
+  -webkit-appearance: none;
+  display: none;
+}
+input[type='date']::-webkit-datetime-edit-month-field {
+  -webkit-appearance: none;
+  display: none;
+}
+input[type='date']::-webkit-datetime-edit-year-field {
+  -webkit-appearance: none;
+  display: none;
+}
+input[type='date']::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: -25px;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  background: transparent;
+  cursor: pointer;
+}
+
+.btn {
+  font-family: inherit;
+  font-size: 0.667rem;
+  background-color: #ffffff;
+  box-shadow: var(--box-shadow);
+  padding: 10px;
+  margin-right: 10px;
+  margin-top: 16px;
 }

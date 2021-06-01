@@ -3,7 +3,7 @@
 :root {
   --bg-color: #fff7e7;
   --blue-color: rgb(143, 182, 255);
-  --box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   --add-btn-size: 64px;
   --add-btn-bottom: 40px;
   --moods-bottom: 55px;
@@ -54,6 +54,7 @@ ol {
 button {
   background: none;
   border-style: none;
+  cursor: pointer;
 }
 
 #root {

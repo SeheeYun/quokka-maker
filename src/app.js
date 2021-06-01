@@ -1,7 +1,6 @@
 import { inject, observer } from 'mobx-react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './app.css';
-import Header from './components/header/header';
 import CardList from './pages/card-list/cardList';
 import CardMaker from './pages/card-maker/cardMaker';
 import Home from './pages/home/home';
@@ -13,19 +12,16 @@ function App({ store }) {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact>
-            <Header page={'home'} />
-            <Home store={store.homeStore} />
+            <Home store={store} />
           </Route>
           <Route path="/login">
-            <Header />
             <Login />
           </Route>
           <Route path="/card-list">
-            <Header />
-            <CardList />
+            <CardList store={store} />
           </Route>
           <Route path="/card-maker">
-            <CardMaker />
+            <CardMaker store={store} />
           </Route>
         </Switch>
       </BrowserRouter>

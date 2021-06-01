@@ -1,6 +1,6 @@
 import { action, computed, makeObservable, observable, toJS } from 'mobx';
 
-class HomeStore {
+class Store {
   constructor() {
     makeObservable(this);
   }
@@ -163,6 +163,31 @@ class HomeStore {
       }, 300);
     }
   };
+
+  @observable
+  _cards = [
+    {
+      date: '2021-06-01',
+      mood: {
+        description: '우울해',
+        bgImage: '/images/mood5.svg',
+        x: null,
+        y: null,
+      },
+      img: '',
+      text: '안녕하세요 감사해요 잘있어요 다시만나요!',
+    },
+  ];
+
+  @computed
+  get cards() {
+    return toJS(this._cards);
+  }
+
+  @action
+  setCards = card => {
+    this._cards.push(card);
+  };
 }
 
-export default new HomeStore();
+export default new Store();

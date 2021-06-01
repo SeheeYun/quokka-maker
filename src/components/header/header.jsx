@@ -6,7 +6,29 @@ import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import MeetingRoomRoundedIcon from '@material-ui/icons/MeetingRoomRounded';
 
-const Header = ({ page }) => {
+const Header = ({ page, date, onDoneClick }) => {
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  const month = date && date.substring(5, 7).replace(/^0/, '');
+  const year = date && date.substring(0, 4);
+
+  const onClick = () => {
+    onDoneClick();
+  };
+
   return page ? (
     <header className={styles.header}>
       <button style={{ visibility: 'hidden' }}>back</button>
@@ -20,8 +42,8 @@ const Header = ({ page }) => {
       <button>
         <ArrowBackIosRoundedIcon fontSize="small" />
       </button>
-      <div>January 2021</div>
-      <button>
+      <div className={styles.year}>{`${monthNames[month]} ${year}`}</div>
+      <button onClick={onClick}>
         <DoneRoundedIcon />
       </button>
     </header>
