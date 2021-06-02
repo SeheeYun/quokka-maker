@@ -1,4 +1,4 @@
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import React, { useEffect, useRef, useState } from 'react';
 import Header from '../components/header/header';
 import Cardform from '../components/cardform/cardform';
@@ -38,4 +38,4 @@ const CardMaker = ({ store }) => {
   );
 };
 
-export default observer(CardMaker);
+export default inject('store')(observer(CardMaker));

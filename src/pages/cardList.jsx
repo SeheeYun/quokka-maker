@@ -1,4 +1,4 @@
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import React from 'react';
 import Header from '../components/header/header';
 import Cards from '../components/cards/cards';
@@ -12,4 +12,4 @@ const CardList = ({ store }) => {
   );
 };
 
-export default observer(CardList);
+export default inject('store')(observer(CardList));

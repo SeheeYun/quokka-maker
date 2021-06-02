@@ -1,11 +1,11 @@
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import React, { useEffect } from 'react';
+import styles from './home.module.css';
 import Header from '../../components/header/header';
 import Moods from '../../components/moods/moods';
 import HomeCardList from '../../components/home-card-list/homeCardList';
-import styles from './home.module.css';
-import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import useMatchMedia from '../../hooks/useMatchMedia';
+import AddRoundedIcon from '@material-ui/icons/AddRounded';
 
 const Home = ({ store }) => {
   const rotate = store.isMoods ? styles.rotate : '';
@@ -43,4 +43,4 @@ const Home = ({ store }) => {
   );
 };
 
-export default observer(Home);
+export default inject('store')(observer(Home));
