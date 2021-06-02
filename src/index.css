@@ -57,6 +57,11 @@ button {
   cursor: pointer;
 }
 
+input,
+textarea {
+  background: transparent;
+}
+
 #root {
   background-color: var(--bg-color);
   background-image: url('/src/line.svg');

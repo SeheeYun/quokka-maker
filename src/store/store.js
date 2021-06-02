@@ -177,6 +177,17 @@ class Store {
       img: '',
       text: '안녕하세요 감사해요 잘있어요 다시만나요!',
     },
+    {
+      date: '2021-06-02',
+      mood: {
+        description: '우울해',
+        bgImage: '/images/mood3.svg',
+        x: null,
+        y: null,
+      },
+      img: '',
+      text: '안녕하세요 감사해요 잘있어요 다시만나요!',
+    },
   ];
 
   @computed
@@ -186,7 +197,8 @@ class Store {
 
   @action
   setCards = card => {
-    this._cards.push(card);
+    // this._cards.push(card);
+    console.log(card);
   };
 }
 

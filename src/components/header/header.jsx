@@ -5,8 +5,11 @@ import DoneRoundedIcon from '@material-ui/icons/DoneRounded';
 import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import MeetingRoomRoundedIcon from '@material-ui/icons/MeetingRoomRounded';
+import { useHistory } from 'react-router';
 
 const Header = ({ page, date, onDoneClick }) => {
+  const history = useHistory();
+
   const monthNames = [
     'January',
     'February',
@@ -25,11 +28,7 @@ const Header = ({ page, date, onDoneClick }) => {
   const month = date && date.substring(5, 7).replace(/^0/, '');
   const year = date && date.substring(0, 4);
 
-  const onClick = () => {
-    onDoneClick();
-  };
-
-  return page ? (
+  return page === 'home' ? (
     <header className={styles.header}>
       <button style={{ visibility: 'hidden' }}>back</button>
       <div className={styles.logo}>quokka</div>
@@ -39,11 +38,18 @@ const Header = ({ page, date, onDoneClick }) => {
     </header>
   ) : (
     <header className={styles.header}>
-      <button>
+      <button
+        onClick={() => {
+          history.push('/');
+        }}
+      >
         <ArrowBackIosRoundedIcon fontSize="small" />
       </button>
       <div className={styles.year}>{`${monthNames[month]} ${year}`}</div>
-      <button onClick={onClick}>
+      <button
+        onClick={onDoneClick}
+        style={{ visibility: page === 'card-list' && 'hidden' }}
+      >
         <DoneRoundedIcon />
       </button>
     </header>

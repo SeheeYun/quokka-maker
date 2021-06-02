@@ -1,8 +1,8 @@
 import { inject, observer } from 'mobx-react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './app.css';
-import CardList from './pages/card-list/cardList';
-import CardMaker from './pages/card-maker/cardMaker';
+import CardList from './pages/cardList';
+import CardMaker from './pages/cardMaker';
 import Home from './pages/home/home';
 import Login from './pages/login/login';
 
