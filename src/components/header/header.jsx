@@ -29,7 +29,7 @@ const Header = ({ page, date, onDoneClick }) => {
 
   return page === 'home' ? (
     <header className={styles.header}>
-      <button style={{ visibility: 'hidden' }}></button>
+      <button style={({ visibility: 'hidden' }, { width: '36px' })}></button>
       <div className={styles.logo}>quokka</div>
       <button>
         <ExitToAppRoundedIcon />

@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import Mood from '../mood/mood';
 import styles from './moods.module.css';
 
-const Moods = ({ store }) => {
+const Moods = ({ store, onMoodClick }) => {
   const requestRef = useRef();
 
   const animate = useCallback(() => {
@@ -28,7 +28,12 @@ const Moods = ({ store }) => {
         style={{ transform: `rotate(${store.rotate}rad)` }}
       >
         {store.moods.map(mood => (
-          <Mood key={store.moods.indexOf(mood)} mood={mood} store={store} />
+          <Mood
+            key={store.moods.indexOf(mood)}
+            mood={mood}
+            store={store}
+            onMoodClick={onMoodClick}
+          />
         ))}
       </div>
     </div>

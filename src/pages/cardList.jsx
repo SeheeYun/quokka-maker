@@ -2,11 +2,14 @@ import { inject, observer } from 'mobx-react';
 import React from 'react';
 import Header from '../components/header/header';
 import Cards from '../components/cards/cards';
+import { useHistory } from 'react-router';
 
 const CardList = ({ store }) => {
+  const history = useHistory();
+
   const onCardClick = card => {
     store.setCard(card);
-    console.log(store.card);
+    history.push('/card-maker');
   };
 
   return (

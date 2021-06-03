@@ -4,7 +4,7 @@ import styles from './card.module.css';
 
 const Card = ({ card, onCardClick }) => {
   return (
-    <li className={styles.li} key={card.date} onClick={() => onCardClick(card)}>
+    <li className={styles.li} key={card.date}>
       <div className={styles.div}>
         <div className={styles.date}>{card.date}</div>
         <img
@@ -21,7 +21,9 @@ const Card = ({ card, onCardClick }) => {
         <p className={styles.text}>{card.text}</p>
       </div>
       <div className={styles.btns}>
-        <button className={styles.btn}>수정</button>
+        <button className={styles.btn} onClick={() => onCardClick(card)}>
+          수정
+        </button>
         <button className={styles.btn}>삭제</button>
       </div>
     </li>

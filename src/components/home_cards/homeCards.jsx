@@ -1,14 +1,19 @@
 import React from 'react';
+import styles from './homeCards.module.css';
 
-const HomeCards = props => (
-  <ul>
-    <li>
-      <img
-        alt="img"
-        draggable="false"
-        src={process.env.PUBLIC_URL + '/images/mood1.svg'}
-      />
-    </li>
+const HomeCards = ({ cards, onThumbClick }) => (
+  <ul className={styles.ul}>
+    {cards.map(card => {
+      return (
+        <li key={card.date} className={styles.li} onClick={onThumbClick}>
+          <img
+            alt="img"
+            draggable="false"
+            src={process.env.PUBLIC_URL + card.mood.bgImage}
+          />
+        </li>
+      );
+    })}
   </ul>
 );
 

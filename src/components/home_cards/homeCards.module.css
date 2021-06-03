@@ -1,0 +1,29 @@
+.ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.li {
+  width: 100%;
+  max-width: 90px;
+  min-width: var(--home-card-size);
+  height: var(--home-card-size);
+  margin-bottom: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+.li > img {
+  height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .li {
+    max-width: calc(100% / 8);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .li {
+    max-width: calc(100% / 5);
+  }
+}

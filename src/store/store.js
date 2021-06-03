@@ -195,7 +195,7 @@ class Store {
 
   @computed
   get card() {
-    return toJS(this._card);
+    return this._card;
   }
 
   @computed

@@ -1,11 +1,8 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { useHistory } from 'react-router';
 import styles from './mood.module.css';
 
-const Mood = ({ store: { rotate, isToggleClick }, mood }) => {
-  const history = useHistory();
-
+const Mood = ({ store: { rotate, isToggleClick }, mood, onMoodClick }) => {
   return (
     <div
       className={styles.mood}
@@ -24,12 +21,7 @@ const Mood = ({ store: { rotate, isToggleClick }, mood }) => {
       <button
         className={styles.btn}
         style={{ transform: `rotate(${-rotate}rad)` }}
-        onClick={() => {
-          history.push({
-            pathname: '/card-maker',
-            state: { mood: mood },
-          });
-        }}
+        onClick={() => onMoodClick(mood)}
       >
         <img
           alt="img"
