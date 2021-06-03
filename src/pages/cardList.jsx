@@ -7,7 +7,7 @@ import { useHistory } from 'react-router';
 const CardList = ({ store }) => {
   const history = useHistory();
 
-  const onCardClick = card => {
+  const onUpdateClick = card => {
     store.setCard(card);
     history.push({
       pathname: '/card-maker',
@@ -15,10 +15,23 @@ const CardList = ({ store }) => {
     });
   };
 
+  const onDeleteClick = card => {
+    store.setCard(card);
+    store.deleteCard();
+    store.setCard({});
+  };
+
   return (
     <>
-      <Header date={store.cards[0].date} page={'card-list'} />
-      <Cards cards={store.cards} onCardClick={onCardClick} />
+      <Header
+        date={store.cards.length > 0 && store.cards[0].date}
+        page={'card-list'}
+      />
+      <Cards
+        cards={store.cards}
+        onUpdateClick={onUpdateClick}
+        onDeleteClick={onDeleteClick}
+      />
     </>
   );
 };

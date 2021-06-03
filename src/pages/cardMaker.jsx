@@ -14,7 +14,6 @@ const CardMaker = ({ store }) => {
 
   const onClick = () => {
     location.state.page === 'update' ? store.updateCard() : store.addCard();
-    console.log(store.cards);
     history.push('/');
   };
 

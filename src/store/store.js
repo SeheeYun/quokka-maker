@@ -232,6 +232,12 @@ class Store {
     foundCard.img = this._card.img;
     foundCard.text = this._card.text;
   };
+
+  @action
+  deleteCard = () => {
+    const foundIndex = this._cards.findIndex(card => card.id === this._card.id);
+    foundIndex >= -1 && this._cards.splice(foundIndex, 1);
+  };
 }
 
 export default new Store();
