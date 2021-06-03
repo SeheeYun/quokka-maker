@@ -165,6 +165,9 @@ class Store {
   };
 
   @observable
+  _card = {};
+
+  @observable
   _cards = [
     {
       date: '2021-06-01',
@@ -191,14 +194,31 @@ class Store {
   ];
 
   @computed
+  get card() {
+    return toJS(this._card);
+  }
+
+  @computed
   get cards() {
     return toJS(this._cards);
   }
 
   @action
-  setCards = card => {
+  setCardProps = (name, value) => {
+    this._card = {
+      ...this._card,
+      [name]: value,
+    };
+  };
+
+  @action
+  setCard = card => {
+    this._card = card;
+  };
+
+  @action
+  addCard = card => {
     // this._cards.push(card);
-    console.log(card);
   };
 }
 

@@ -2,9 +2,9 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import styles from './card.module.css';
 
-const Card = ({ card }) => {
+const Card = ({ card, onCardClick }) => {
   return (
-    <li className={styles.li} key={card.date}>
+    <li className={styles.li} key={card.date} onClick={() => onCardClick(card)}>
       <div className={styles.div}>
         <div className={styles.date}>{card.date}</div>
         <img

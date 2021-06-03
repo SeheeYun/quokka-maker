@@ -16,6 +16,13 @@ const Home = ({ store }) => {
     store.translateMoods(isMatches);
   }, [isMatches]);
 
+  useEffect(() => {
+    return () => {
+      store.setMoods();
+      store.setToggleClick();
+    };
+  }, []);
+
   const onClick = () => {
     store.disableClick();
   };
@@ -27,16 +34,7 @@ const Home = ({ store }) => {
         <button className={`${styles.btn} ${rotate}`} onClick={onClick}>
           <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
         </button>
-        {store.isMoods && (
-          <div
-            className={styles.wrap}
-            onPointerDown={e => store.onPointerDown(e)}
-            onPointerMove={e => store.onPointerMove(e)}
-            onPointerUp={e => store.onPointerUp(e)}
-          >
-            <Moods store={store} />
-          </div>
-        )}
+        {store.isMoods && <Moods store={store} />}
         <HomeCardList />
       </div>
     </>

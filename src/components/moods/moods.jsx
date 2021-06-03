@@ -18,12 +18,19 @@ const Moods = ({ store }) => {
 
   return (
     <div
-      className={styles.moods}
-      style={{ transform: `rotate(${store.rotate}rad)` }}
+      className={styles.wrap}
+      onPointerDown={e => store.onPointerDown(e)}
+      onPointerMove={e => store.onPointerMove(e)}
+      onPointerUp={e => store.onPointerUp(e)}
     >
-      {store.moods.map(mood => (
-        <Mood key={store.moods.indexOf(mood)} mood={mood} store={store} />
-      ))}
+      <div
+        className={styles.moods}
+        style={{ transform: `rotate(${store.rotate}rad)` }}
+      >
+        {store.moods.map(mood => (
+          <Mood key={store.moods.indexOf(mood)} mood={mood} store={store} />
+        ))}
+      </div>
     </div>
   );
 };

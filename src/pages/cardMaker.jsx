@@ -1,24 +1,26 @@
 import { inject, observer } from 'mobx-react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Header from '../components/header/header';
-import Cardform from '../components/cardform/cardform';
+import CardForm from '../components/cardForm/cardForm';
 import { useLocation } from 'react-router';
 
 const CardMaker = ({ store }) => {
   const location = useLocation();
-  const mood = location.state ? location.state.mood : '';
 
   const textRef = useRef();
   const dateRef = useRef();
 
-  const [date, setDate] = useState();
-  const onChange = () => {
-    setDate(dateRef.current.value);
+  const onChange = (name, value) => {
+    store.setCardProps(name, value);
   };
 
   useEffect(() => {
-    dateRef.current.value = new Date().toISOString().substring(0, 10);
-    setDate(dateRef.current.value);
+    if (Object.keys(store.card).length === 0) {
+      const mood = location.state ? location.state.mood : '';
+      const date = new Date().toISOString().substring(0, 10);
+      onChange('mood', mood);
+      onChange('date', date);
+    }
   }, []);
 
   const onClick = () => {
@@ -27,13 +29,8 @@ const CardMaker = ({ store }) => {
 
   return (
     <>
-      <Header date={date} onDoneClick={onClick} />
-      <Cardform
-        onDateChange={onChange}
-        mood={mood}
-        dateRef={dateRef}
-        textRef={textRef}
-      />
+      <Header date={store.card.date} onDoneClick={onClick} />
+      <CardForm card={store.card} dateRef={dateRef} textRef={textRef} />
     </>
   );
 };
