@@ -4,7 +4,7 @@ import styles from './card.module.css';
 
 const Card = ({ card, onCardClick }) => {
   return (
-    <li className={styles.li} key={card.date}>
+    <li className={styles.li}>
       <div className={styles.div}>
         <div className={styles.date}>{card.date}</div>
         <img

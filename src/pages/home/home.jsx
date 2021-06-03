@@ -24,7 +24,10 @@ const Home = ({ store }) => {
   const onMoodClick = mood => {
     history.push({
       pathname: '/card-maker',
-      state: { mood: mood },
+      state: {
+        mood: mood,
+        page: 'add',
+      },
     });
     store.setMoods();
     store.setToggleClick();

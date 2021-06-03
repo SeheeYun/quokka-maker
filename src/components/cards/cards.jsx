@@ -6,7 +6,7 @@ import Card from '../card/card';
 const Cards = ({ cards, onCardClick }) => (
   <ul className={styles.ul}>
     {cards.map(card => (
-      <Card card={card} key={card.date} onCardClick={onCardClick} />
+      <Card card={card} key={card.id} onCardClick={onCardClick} />
     ))}
   </ul>
 );

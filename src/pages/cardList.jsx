@@ -9,7 +9,10 @@ const CardList = ({ store }) => {
 
   const onCardClick = card => {
     store.setCard(card);
-    history.push('/card-maker');
+    history.push({
+      pathname: '/card-maker',
+      state: { page: 'update' },
+    });
   };
 
   return (

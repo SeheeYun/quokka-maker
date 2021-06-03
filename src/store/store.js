@@ -179,6 +179,7 @@ class Store {
       date: '2021-06-01',
       img: '',
       text: '안녕하세요 감사해요 잘있어요 다시만나요!',
+      id: 1,
     },
     {
       mood: {
@@ -190,6 +191,7 @@ class Store {
       date: '2021-06-02',
       img: '',
       text: '안녕하세요 감사해요 잘있어요 다시만나요!',
+      id: 2,
     },
   ];
 
@@ -218,8 +220,17 @@ class Store {
 
   @action
   addCard = () => {
+    this.setCardProps('id', new Date());
     this._cards.push(this._card);
-    console.log(this.cards);
+  };
+
+  @action
+  updateCard = () => {
+    const foundCard = this._cards.find(card => card.id === this._card.id);
+    foundCard.mood = this._card.mood;
+    foundCard.date = this._card.date;
+    foundCard.img = this._card.img;
+    foundCard.text = this._card.text;
   };
 }
 

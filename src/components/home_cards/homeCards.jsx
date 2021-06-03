@@ -5,7 +5,7 @@ const HomeCards = ({ cards, onThumbClick }) => (
   <ul className={styles.ul}>
     {cards.map(card => {
       return (
-        <li key={card.date} className={styles.li} onClick={onThumbClick}>
+        <li key={card.id} className={styles.li} onClick={onThumbClick}>
           <img
             alt="img"
             draggable="false"
