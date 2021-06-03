@@ -21,6 +21,8 @@ const CardMaker = ({ store }) => {
       onChange('mood', mood);
       onChange('date', date);
     }
+
+    return () => store.setCard({});
   }, []);
 
   const onClick = () => {
