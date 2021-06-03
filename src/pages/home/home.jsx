@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import styles from './home.module.css';
 import Header from '../../components/header/header';
 import Moods from '../../components/moods/moods';
-import HomeCardList from '../../components/home-card-list/homeCardList';
+import HomeCards from '../../components/home_cards/homeCards';
 import useMatchMedia from '../../hooks/useMatchMedia';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 
@@ -35,7 +35,7 @@ const Home = ({ store }) => {
           <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
         </button>
         {store.isMoods && <Moods store={store} />}
-        <HomeCardList />
+        <HomeCards />
       </div>
     </>
   );

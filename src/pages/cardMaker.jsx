@@ -1,5 +1,5 @@
 import { inject, observer } from 'mobx-react';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/header/header';
 import CardForm from '../components/cardForm/cardForm';
 import { useLocation } from 'react-router';
@@ -7,11 +7,12 @@ import { useLocation } from 'react-router';
 const CardMaker = ({ store }) => {
   const location = useLocation();
 
-  const textRef = useRef();
-  const dateRef = useRef();
-
   const onChange = (name, value) => {
     store.setCardProps(name, value);
+  };
+
+  const onClick = () => {
+    store.addCard();
   };
 
   useEffect(() => {
@@ -25,14 +26,10 @@ const CardMaker = ({ store }) => {
     return () => store.setCard({});
   }, []);
 
-  const onClick = () => {
-    console.log('asd');
-  };
-
   return (
     <>
       <Header date={store.card.date} onDoneClick={onClick} />
-      <CardForm card={store.card} dateRef={dateRef} textRef={textRef} />
+      <CardForm card={store.card} onPropsChange={onChange} />
     </>
   );
 };

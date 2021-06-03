@@ -3,16 +3,17 @@ import React from 'react';
 import styles from './cardForm.module.css';
 import { TextareaAutosize } from '@material-ui/core';
 
-const CardForm = ({ onDateChange, dateRef, textRef, card }) => {
+const CardForm = ({ onPropsChange, card }) => {
   return (
     <div className={styles.wrap}>
       <div className={styles.div}>
         <input
-          ref={dateRef}
           type="date"
           className={styles.date}
           defaultValue={card.date ? card.date : ''}
-          onChange={onDateChange}
+          onChange={e => {
+            onPropsChange('date', e.target.value);
+          }}
         />
         <img
           draggable="false"
@@ -25,7 +26,13 @@ const CardForm = ({ onDateChange, dateRef, textRef, card }) => {
             <img src={process.env.PUBLIC_URL + ''} alt="img" />
           </div>
         </div>
-        <TextareaAutosize ref={textRef} spellCheck="false" value={card.text} />
+        <TextareaAutosize
+          spellCheck="false"
+          value={card.text ? card.text : ''}
+          onChange={e => {
+            onPropsChange('text', e.target.value);
+          }}
+        />
       </div>
       <div className={styles.btns}>
         <button className={styles.btn}>이미지 삽입</button>

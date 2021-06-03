@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HomeCardList = props => (
+const HomeCards = props => (
   <ul>
     <li>
       <img
@@ -12,4 +12,4 @@ const HomeCardList = props => (
   </ul>
 );
 
-export default HomeCardList;
+export default HomeCards;

@@ -24,13 +24,12 @@ const Header = ({ page, date, onDoneClick }) => {
     'November',
     'December',
   ];
-
   const month = date && date.substring(5, 7).replace(/^0/, '');
   const year = date && date.substring(0, 4);
 
   return page === 'home' ? (
     <header className={styles.header}>
-      <button style={{ visibility: 'hidden' }}>back</button>
+      <button style={{ visibility: 'hidden' }}></button>
       <div className={styles.logo}>quokka</div>
       <button>
         <ExitToAppRoundedIcon />

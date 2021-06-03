@@ -170,24 +170,24 @@ class Store {
   @observable
   _cards = [
     {
-      date: '2021-06-01',
       mood: {
         description: '우울해',
         bgImage: '/images/mood5.svg',
         x: null,
         y: null,
       },
+      date: '2021-06-01',
       img: '',
       text: '안녕하세요 감사해요 잘있어요 다시만나요!',
     },
     {
-      date: '2021-06-02',
       mood: {
         description: '우울해',
         bgImage: '/images/mood3.svg',
         x: null,
         y: null,
       },
+      date: '2021-06-02',
       img: '',
       text: '안녕하세요 감사해요 잘있어요 다시만나요!',
     },
@@ -217,8 +217,9 @@ class Store {
   };
 
   @action
-  addCard = card => {
-    // this._cards.push(card);
+  addCard = () => {
+    this._cards.push(this._card);
+    console.log(this.cards);
   };
 }
 
