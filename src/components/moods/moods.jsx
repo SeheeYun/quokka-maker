@@ -2,6 +2,7 @@ import { observer } from 'mobx-react';
 import React, { useCallback, useEffect, useRef } from 'react';
 import Mood from '../mood/mood';
 import styles from './moods.module.css';
+import useMatchMedia from '../../hooks/useMatchMedia';
 
 const Moods = ({ store, onMoodClick }) => {
   const requestRef = useRef();
@@ -15,6 +16,12 @@ const Moods = ({ store, onMoodClick }) => {
     requestRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(requestRef.current);
   }, [animate]);
+
+  const { isMatches } = useMatchMedia('767');
+
+  useEffect(() => {
+    store.translateMoods(isMatches);
+  }, [isMatches]);
 
   return (
     <div

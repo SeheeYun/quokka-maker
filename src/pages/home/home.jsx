@@ -4,14 +4,12 @@ import styles from './home.module.css';
 import Header from '../../components/header/header';
 import Moods from '../../components/moods/moods';
 import HomeCards from '../../components/home_cards/homeCards';
-import useMatchMedia from '../../hooks/useMatchMedia';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import { useHistory } from 'react-router';
 
 const Home = ({ store }) => {
   const history = useHistory();
   const rotate = store.isMoods ? styles.rotate : '';
-  const { isMatches } = useMatchMedia('767');
 
   const onAddClick = () => {
     store.disableClick();
@@ -32,10 +30,6 @@ const Home = ({ store }) => {
     store.setMoods();
     store.setToggleClick();
   };
-
-  useEffect(() => {
-    store.translateMoods(isMatches);
-  }, [isMatches]);
 
   return (
     <>
