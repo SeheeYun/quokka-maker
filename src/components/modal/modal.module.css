@@ -1,0 +1,38 @@
+.wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  font-size: 0.833rem;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: #fff;
+  width: 320px;
+  border-radius: 10px;
+}
+.modal > img {
+  width: 70px;
+}
+.modal > p {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  font-size: 0.667rem;
+  font-family: inherit;
+  background-color: var(--blue-color);
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+}

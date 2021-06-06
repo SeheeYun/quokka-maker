@@ -188,7 +188,7 @@ class Store {
         x: null,
         y: null,
       },
-      date: '2021-06-02',
+      date: '2021-06-04',
       img: '',
       text: '안녕하세요 감사해요 잘있어요 다시만나요!',
       id: 2,
@@ -237,6 +237,14 @@ class Store {
   deleteCard = () => {
     const foundIndex = this._cards.findIndex(card => card.id === this._card.id);
     foundIndex >= -1 && this._cards.splice(foundIndex, 1);
+  };
+
+  @observable
+  isModal = true;
+
+  @action
+  onModalClick = () => {
+    this.isModal = !this.isModal;
   };
 }
 
