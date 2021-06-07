@@ -248,7 +248,7 @@ class Store {
     if (this.isRedundancyDate) {
       throw new Error('중복된 날짜 사용');
     } else {
-      this.setCardProps('id', new Date());
+      this.setCardProps('id', new Date().toISOString());
       this._cards.push(this._card);
     }
   };

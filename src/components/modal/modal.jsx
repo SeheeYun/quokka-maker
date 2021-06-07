@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import React from 'react';
 import styles from './modal.module.css';
 
@@ -11,4 +12,4 @@ const Modal = ({ onModalClick }) => (
   </div>
 );
 
-export default Modal;
+export default observer(Modal);

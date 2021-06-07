@@ -12,7 +12,10 @@
   text-align: center;
   cursor: pointer;
 }
-.li > img {
+.li > a {
+  height: 100%;
+}
+.li img {
   height: 100%;
 }
 

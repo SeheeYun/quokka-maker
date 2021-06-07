@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './home.module.css';
 import Header from '../../components/header/header';
 import Moods from '../../components/moods/moods';
-import HomeCards from '../../components/home_cards/homeCards';
+import Thumbnails from '../../components/thumbnails/thumbnails';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import { useHistory } from 'react-router';
 
@@ -13,10 +13,6 @@ const Home = ({ store }) => {
 
   const onAddClick = () => {
     store.disableClick();
-  };
-
-  const onThumbClick = () => {
-    history.push('/card-list');
   };
 
   const onMoodClick = mood => {
@@ -39,7 +35,7 @@ const Home = ({ store }) => {
           <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
         </button>
         {store.isMoods && <Moods store={store} onMoodClick={onMoodClick} />}
-        <HomeCards cards={store.cards} onThumbClick={onThumbClick} />
+        <Thumbnails cards={store.cards} />
       </div>
     </>
   );

@@ -13,7 +13,7 @@ const Card = ({ store, card, onUpdateClick, onDeleteClick }) => {
   }, [isloaded]);
 
   return (
-    <li className={styles.li}>
+    <li className={styles.li} id={card.id}>
       <div className={styles.div} ref={itemRef}>
         <div className={styles.date}>{card.date.substring(8, 11)}</div>
         <img
