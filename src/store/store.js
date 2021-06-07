@@ -246,7 +246,7 @@ class Store {
   @action
   addCard = () => {
     if (this.isRedundancyDate) {
-      throw '중복된 날짜 사용';
+      throw new Error('중복된 날짜 사용');
     } else {
       this.setCardProps('id', new Date());
       this._cards.push(this._card);
@@ -257,7 +257,7 @@ class Store {
   updateCard = () => {
     const foundCard = this._cards.find(card => card.id === this._card.id);
     if (foundCard.date !== this._card.date && this.isRedundancyDate) {
-      throw '중복된 날짜 사용';
+      throw new Error('중복된 날짜 사용');
     } else {
       foundCard.mood = this._card.mood;
       foundCard.date = this._card.date;
