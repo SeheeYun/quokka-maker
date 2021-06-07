@@ -206,6 +206,11 @@ class Store {
   }
 
   @action
+  setCard = card => {
+    this._card = card;
+  };
+
+  @action
   setCardProps = (name, value) => {
     this._card = {
       ...this._card,
@@ -213,38 +218,46 @@ class Store {
     };
   };
 
+  @observable
+  isModal = false;
+
   @action
-  setCard = card => {
-    this._card = card;
+  onModalClick = () => {
+    this.isModal = !this.isModal;
   };
+
+  @computed
+  get isRedundancyDate() {
+    return this._cards.some(card => card.date === this._card.date);
+  }
 
   @action
   addCard = () => {
-    this.setCardProps('id', new Date());
-    this._cards.push(this._card);
+    if (this.isRedundancyDate) {
+      throw '중복된 날짜 사용';
+    } else {
+      this.setCardProps('id', new Date());
+      this._cards.push(this._card);
+    }
   };
 
   @action
   updateCard = () => {
     const foundCard = this._cards.find(card => card.id === this._card.id);
-    foundCard.mood = this._card.mood;
-    foundCard.date = this._card.date;
-    foundCard.img = this._card.img;
-    foundCard.text = this._card.text;
+    if (foundCard.date !== this._card.date && this.isRedundancyDate) {
+      throw '중복된 날짜 사용';
+    } else {
+      foundCard.mood = this._card.mood;
+      foundCard.date = this._card.date;
+      foundCard.img = this._card.img;
+      foundCard.text = this._card.text;
+    }
   };
 
   @action
   deleteCard = () => {
     const foundIndex = this._cards.findIndex(card => card.id === this._card.id);
     foundIndex >= -1 && this._cards.splice(foundIndex, 1);
-  };
-
-  @observable
-  isModal = true;
-
-  @action
-  onModalClick = () => {
-    this.isModal = !this.isModal;
   };
 }
 

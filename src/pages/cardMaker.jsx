@@ -14,13 +14,17 @@ const CardMaker = ({ store }) => {
     store.setCardProps(name, value);
   };
 
-  const onClick = () => {
-    location.state.page === 'update' ? store.updateCard() : store.addCard();
-    history.push('/');
-  };
-
   const onModalClick = () => {
     store.onModalClick();
+  };
+
+  const onClick = () => {
+    try {
+      location.state.page === 'update' ? store.updateCard() : store.addCard();
+      history.push('/');
+    } catch {
+      onModalClick();
+    }
   };
 
   useEffect(() => {
@@ -29,12 +33,6 @@ const CardMaker = ({ store }) => {
       const date = newDate;
       onChange('mood', mood);
       onChange('date', date);
-    }
-
-    const isRedundancyDate = store.cards.some(
-      card => card.date === '2021-06-04'
-    );
-    if (isRedundancyDate) {
     }
 
     return () => store.setCard({});
