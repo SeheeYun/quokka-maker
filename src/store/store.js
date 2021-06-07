@@ -176,7 +176,7 @@ class Store {
         x: null,
         y: null,
       },
-      date: '2021-06-01',
+      date: '2020-09-01',
       img: '',
       text: '안녕하세요 감사해요 잘있어요 다시만나요!',
       id: 1,
@@ -188,10 +188,22 @@ class Store {
         x: null,
         y: null,
       },
-      date: '2021-06-04',
+      date: '2021-03-04',
       img: '',
       text: '안녕하세요 감사해요 잘있어요 다시만나요!',
       id: 2,
+    },
+    {
+      mood: {
+        description: '우울해',
+        bgImage: '/images/mood1.svg',
+        x: null,
+        y: null,
+      },
+      date: '2021-06-04',
+      img: '',
+      text: '안녕하세요 감사해요 잘있어요 다시만나요!',
+      id: 3,
     },
   ];
 
@@ -258,6 +270,14 @@ class Store {
   deleteCard = () => {
     const foundIndex = this._cards.findIndex(card => card.id === this._card.id);
     foundIndex >= -1 && this._cards.splice(foundIndex, 1);
+  };
+
+  @observable
+  headerDate = null;
+
+  @action
+  setHeaderDate = date => {
+    this.headerDate = date;
   };
 }
 

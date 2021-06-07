@@ -23,12 +23,9 @@ const CardList = ({ store }) => {
 
   return (
     <>
-      <Header
-        date={store.cards.length > 0 && store.cards[0].date}
-        page={'card-list'}
-      />
+      <Header date={store.headerDate && store.headerDate} page={'card-list'} />
       <Cards
-        cards={store.cards}
+        store={store}
         onUpdateClick={onUpdateClick}
         onDeleteClick={onDeleteClick}
       />

@@ -58,6 +58,7 @@ textarea {
   top: 20px;
   width: 36px;
   font-size: 20px;
+  font-family: inherit;
   border-style: none;
   border-bottom: solid 2px;
   text-align: center;

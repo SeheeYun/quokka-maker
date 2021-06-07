@@ -5,7 +5,13 @@
 .date {
   align-self: flex-start;
   position: absolute;
-  top: 0;
+  top: 20px;
+  width: 36px;
+  font-size: 20px;
+  border-style: none;
+  border-bottom: solid 2px;
+  text-align: center;
+  padding: 3px;
 }
 
 .div {
@@ -49,4 +55,14 @@
   font-size: 0.833rem;
   text-align: center;
   margin-top: 30px;
+}
+
+.btn {
+  color: #333333;
+  background-color: #ffffff;
+  box-shadow: var(--box-shadow);
+  padding: 10px;
+  margin: 10px 0;
+  margin-right: 10px;
+  border-radius: 10px;
 }

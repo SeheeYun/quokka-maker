@@ -1,11 +1,12 @@
 import { inject, observer } from 'mobx-react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Header from '../components/header/header';
 import CardForm from '../components/cardForm/cardForm';
 import Modal from '../components/modal/modal';
 import { useHistory, useLocation } from 'react-router';
 
 const CardMaker = ({ store }) => {
+  const textRef = useRef();
   const location = useLocation();
   const history = useHistory();
   const newDate = new Date().toISOString().substring(0, 10);
@@ -28,6 +29,8 @@ const CardMaker = ({ store }) => {
   };
 
   useEffect(() => {
+    textRef.current.focus();
+
     if (location.state.page === 'add') {
       const mood = location.state ? location.state.mood : '';
       const date = newDate;
@@ -42,7 +45,12 @@ const CardMaker = ({ store }) => {
     <>
       {store.isModal && <Modal onModalClick={onModalClick} />}
       <Header date={store.card.date} onDoneClick={onClick} />
-      <CardForm card={store.card} onPropsChange={onChange} newDate={newDate} />
+      <CardForm
+        card={store.card}
+        onPropsChange={onChange}
+        newDate={newDate}
+        textRef={textRef}
+      />
     </>
   );
 };

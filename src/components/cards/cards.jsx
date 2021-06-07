@@ -3,11 +3,12 @@ import React from 'react';
 import styles from './cards.module.css';
 import Card from '../card/card';
 
-const Cards = ({ cards, onUpdateClick, onDeleteClick }) => (
+const Cards = ({ store, onUpdateClick, onDeleteClick }) => (
   <ul className={styles.ul}>
-    {cards.length > 0 &&
-      cards.map(card => (
+    {store.cards.length > 0 &&
+      store.cards.map(card => (
         <Card
+          store={store}
           card={card}
           key={card.id}
           onUpdateClick={onUpdateClick}

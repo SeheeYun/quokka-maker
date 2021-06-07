@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './cardForm.module.css';
 import { TextareaAutosize } from '@material-ui/core';
 
-const CardForm = ({ onPropsChange, card, newDate }) => (
+const CardForm = ({ onPropsChange, card, newDate, textRef }) => (
   <div className={styles.wrap}>
     <div className={styles.div}>
       <input
@@ -27,6 +27,7 @@ const CardForm = ({ onPropsChange, card, newDate }) => (
         </div>
       </div>
       <TextareaAutosize
+        ref={textRef}
         spellCheck="false"
         value={card.text ? card.text : ''}
         onChange={e => {

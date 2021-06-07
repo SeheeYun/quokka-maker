@@ -1,5 +1,5 @@
 import { inject, observer } from 'mobx-react';
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './home.module.css';
 import Header from '../../components/header/header';
 import Moods from '../../components/moods/moods';
