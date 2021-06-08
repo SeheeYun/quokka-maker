@@ -231,10 +231,7 @@ class Store {
       foundCard.date = this._card.date;
       foundCard.img = this._card.img;
       foundCard.text = this._card.text;
-      foundCard.id =
-        foundCard.date !== this._card.date
-          ? new Date(this._card.date)
-          : this._card.id;
+      foundCard.id = new Date(this._card.date);
     }
   };
 
