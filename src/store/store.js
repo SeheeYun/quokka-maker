@@ -168,44 +168,7 @@ class Store {
   _card = {};
 
   @observable
-  _cards = [
-    {
-      mood: {
-        description: '우울해',
-        bgImage: '/images/mood5.svg',
-        x: null,
-        y: null,
-      },
-      date: '2020-09-01',
-      img: '',
-      text: '안녕하세요 감사해요 잘있어요 다시만나요!',
-      id: 1,
-    },
-    {
-      mood: {
-        description: '우울해',
-        bgImage: '/images/mood3.svg',
-        x: null,
-        y: null,
-      },
-      date: '2021-03-04',
-      img: '',
-      text: '안녕하세요 감사해요 잘있어요 다시만나요!',
-      id: 2,
-    },
-    {
-      mood: {
-        description: '우울해',
-        bgImage: '/images/mood1.svg',
-        x: null,
-        y: null,
-      },
-      date: '2021-06-04',
-      img: '',
-      text: '안녕하세요 감사해요 잘있어요 다시만나요!',
-      id: 3,
-    },
-  ];
+  _cards = [];
 
   @computed
   get card() {
@@ -215,6 +178,11 @@ class Store {
   @computed
   get cards() {
     return toJS(this._cards);
+  }
+
+  @computed
+  get sortedCards() {
+    return this.cards.sort((a, b) => a.id - b.id);
   }
 
   @action
@@ -248,7 +216,7 @@ class Store {
     if (this.isRedundancyDate) {
       throw new Error('중복된 날짜 사용');
     } else {
-      this.setCardProps('id', new Date().toISOString());
+      this.setCardProps('id', new Date(this._card.date));
       this._cards.push(this._card);
     }
   };
@@ -263,6 +231,10 @@ class Store {
       foundCard.date = this._card.date;
       foundCard.img = this._card.img;
       foundCard.text = this._card.text;
+      foundCard.id =
+        foundCard.date !== this._card.date
+          ? new Date(this._card.date)
+          : this._card.id;
     }
   };
 

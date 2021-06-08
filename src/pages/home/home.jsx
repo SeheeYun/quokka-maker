@@ -1,5 +1,5 @@
 import { inject, observer } from 'mobx-react';
-import React from 'react';
+import React, { useCallback } from 'react';
 import styles from './home.module.css';
 import Header from '../../components/header/header';
 import Moods from '../../components/moods/moods';
@@ -8,6 +8,7 @@ import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import { useHistory } from 'react-router';
 
 const Home = ({ store }) => {
+  console.log(store.sortedCards);
   const history = useHistory();
   const rotate = store.isMoods ? styles.rotate : '';
 
@@ -15,7 +16,7 @@ const Home = ({ store }) => {
     store.disableClick();
   };
 
-  const onMoodClick = mood => {
+  const onMoodClick = useCallback(mood => {
     history.push({
       pathname: '/card-maker',
       state: {
@@ -25,7 +26,7 @@ const Home = ({ store }) => {
     });
     store.setMoods();
     store.setToggleClick();
-  };
+  }, []);
 
   return (
     <>
@@ -35,7 +36,7 @@ const Home = ({ store }) => {
           <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
         </button>
         {store.isMoods && <Moods store={store} onMoodClick={onMoodClick} />}
-        <Thumbnails cards={store.cards} />
+        <Thumbnails cards={store.sortedCards} />
       </div>
     </>
   );

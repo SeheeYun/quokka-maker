@@ -5,8 +5,8 @@ import Card from '../card/card';
 
 const Cards = ({ store, onUpdateClick, onDeleteClick }) => (
   <ul className={styles.ul}>
-    {store.cards.length > 0 &&
-      store.cards.map(card => (
+    {store.sortedCards.length > 0 &&
+      store.sortedCards.map(card => (
         <Card
           store={store}
           card={card}
