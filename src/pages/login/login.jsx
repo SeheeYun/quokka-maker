@@ -1,12 +1,11 @@
 import { observer } from 'mobx-react';
 import React, { useEffect } from 'react';
 import Header from '../../components/header/header';
-import startFirebaseUI from '../../service/firebaseInit';
 import styles from './login.module.css';
 
-const Login = props => {
+const Login = ({ authService }) => {
   useEffect(() => {
-    startFirebaseUI('#firebaseui');
+    authService('#firebaseui');
   }, []);
 
   return (
