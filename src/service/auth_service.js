@@ -3,17 +3,34 @@ import firebaseApp from './firebaseInit';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
 
-const ui = new firebaseui.auth.AuthUI(firebaseApp.auth());
+class AuthService {
+  constructor() {
+    this.uiConfig = {
+      signInSuccessUrl: '/',
+      signInOptions: [
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
+      ],
+      // callbacks: {
+      //   signInSuccessWithAuthResult: () => false,
+      // },
+    };
+    this.ui = new firebaseui.auth.AuthUI(firebaseApp.auth());
+  }
 
-const authService = elementId => {
-  ui.start(elementId, {
-    signInSuccessUrl: '/',
-    signInOptions: [
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    ],
-    // Other config options...
-  });
-};
+  login(elementId) {
+    this.ui.start(elementId, this.uiConfig);
+  }
 
-export default authService;
+  logout() {
+    return firebaseApp.auth().signOut();
+  }
+
+  onAuthStateChanged(onUserChanged) {
+    firebaseApp.auth().onAuthStateChanged(user => {
+      onUserChanged(user);
+    });
+  }
+}
+export default AuthService;

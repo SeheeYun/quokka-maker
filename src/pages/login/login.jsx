@@ -1,21 +1,20 @@
 import { observer } from 'mobx-react';
 import React, { useEffect } from 'react';
-import Header from '../../components/header/header';
 import styles from './login.module.css';
 
 const Login = ({ authService }) => {
   useEffect(() => {
-    authService('#firebaseui');
+    authService.login('#firebaseui');
   }, []);
 
   return (
-    <>
-      <Header />
-      <div className={styles.div}>
-        <p>환영 합니다!</p>
-        <div id="firebaseui"></div>
+    <div className={styles.wrap}>
+      <div className={styles.modal}>
+        <img src={process.env.PUBLIC_URL + '/images/mood3.svg'} alt="img" />
+        <p>WELCOME!</p>
+        <div id="firebaseui" className={styles.ui}></div>
       </div>
-    </>
+    </div>
   );
 };
 

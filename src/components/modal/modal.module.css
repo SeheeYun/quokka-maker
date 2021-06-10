@@ -17,8 +17,9 @@
   box-sizing: border-box;
   padding: 20px;
   background-color: #fff;
-  width: 320px;
-  border-radius: 10px;
+  width: 310px;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
 }
 .modal > img {
   width: 70px;

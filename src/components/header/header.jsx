@@ -7,7 +7,14 @@ import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import MeetingRoomRoundedIcon from '@material-ui/icons/MeetingRoomRounded';
 import { useHistory } from 'react-router';
 
-const Header = ({ page, date, onDoneClick }) => {
+const Header = ({
+  page,
+  date,
+  onDoneClick,
+  onLoginClick,
+  onLogoutClick,
+  uid,
+}) => {
   const history = useHistory();
 
   const monthNames = [
@@ -31,9 +38,15 @@ const Header = ({ page, date, onDoneClick }) => {
     <header className={styles.header}>
       <button style={({ visibility: 'hidden' }, { width: '36px' })}></button>
       <div className={styles.logo}>quokka</div>
-      <button>
-        <ExitToAppRoundedIcon />
-      </button>
+      {uid ? (
+        <button onClick={onLogoutClick}>
+          <MeetingRoomRoundedIcon />
+        </button>
+      ) : (
+        <button onClick={onLoginClick}>
+          <ExitToAppRoundedIcon />
+        </button>
+      )}
     </header>
   ) : (
     <header className={styles.header}>

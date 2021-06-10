@@ -12,7 +12,7 @@ function App({ authService }) {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact>
-            <Home />
+            <Home authService={authService} />
           </Route>
           <Route path="/login">
             <Login authService={authService} />

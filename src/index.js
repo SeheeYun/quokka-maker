@@ -4,8 +4,9 @@ import './index.css';
 import App from './app';
 import { Provider } from 'mobx-react';
 import store from './store/store';
-import authService from './service/auth_service';
+import AuthService from './service/auth_service';
 
+const authService = new AuthService();
 ReactDOM.render(
   <Provider store={store}>
     <App authService={authService} />

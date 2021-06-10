@@ -248,6 +248,14 @@ class Store {
   setHeaderDate = date => {
     this.headerDate = date;
   };
+
+  @observable
+  uid = null;
+
+  @action
+  setUid = uid => {
+    this.uid = uid;
+  };
 }
 
 export default new Store();
