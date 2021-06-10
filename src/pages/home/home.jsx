@@ -49,7 +49,6 @@ const Home = ({ store, authService }) => {
   }, []);
 
   useEffect(() => {
-    console.log(store.uid);
     authService //
       .onAuthStateChanged(user => {
         if (user) {

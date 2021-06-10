@@ -6,6 +6,8 @@ import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
 
 const Card = ({ store, card, onUpdateClick, onDeleteClick }) => {
+  const { id, mood, text, fileURL } = card;
+
   const { isloaded, itemRef } = useIntersectionObserver();
 
   useEffect(() => {
@@ -13,21 +15,23 @@ const Card = ({ store, card, onUpdateClick, onDeleteClick }) => {
   }, [isloaded]);
 
   return (
-    <li className={styles.li} id={card.id}>
+    <li className={styles.li} id={id}>
       <div className={styles.div} ref={itemRef}>
         <div className={styles.date}>{card.date.substring(8, 11)}</div>
         <img
           draggable="false"
-          src={process.env.PUBLIC_URL + card.mood.bgImage}
+          src={process.env.PUBLIC_URL + mood.bgImage}
           alt="img"
         />
-        <p className={styles.p}>{card.mood.description}</p>
-        <div className={styles.photo_wrap}>
-          <div className={styles.photo}>
-            <img src={process.env.PUBLIC_URL + ''} alt="img" />
+        <p className={styles.p}>{mood.description}</p>
+        {fileURL && (
+          <div className={styles.photo_wrap}>
+            <div className={styles.photo}>
+              <img src={process.env.PUBLIC_URL + fileURL} alt="img" />
+            </div>
           </div>
-        </div>
-        <p className={styles.text}>{card.text}</p>
+        )}
+        <p className={styles.text}>{text}</p>
       </div>
       <div className={styles.btns}>
         <button className={styles.btn} onClick={() => onUpdateClick(card)}>

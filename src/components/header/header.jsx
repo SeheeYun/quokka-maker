@@ -17,23 +17,6 @@ const Header = ({
 }) => {
   const history = useHistory();
 
-  const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  const month = date && date.substring(5, 7).replace(/^0/, '');
-  const year = date && date.substring(0, 4);
-
   return page === 'home' ? (
     <header className={styles.header}>
       <button style={({ visibility: 'hidden' }, { width: '36px' })}></button>
@@ -57,7 +40,7 @@ const Header = ({
       >
         <ArrowBackIosRoundedIcon fontSize="small" />
       </button>
-      <div className={styles.year}>{`${monthNames[month]} ${year}`}</div>
+      <div className={styles.year}>{getDate(date)}</div>
       <button
         onClick={onDoneClick}
         style={{ visibility: page === 'card-list' && 'hidden' }}
@@ -67,4 +50,27 @@ const Header = ({
     </header>
   );
 };
+
+function getDate(date) {
+  const monthNames = [
+    '',
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const month = date && date.substring(5, 7).replace(/^0/, '');
+  const year = date && date.substring(0, 4);
+
+  return `${monthNames[month]} ${year}`;
+}
+
 export default observer(Header);

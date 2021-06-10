@@ -168,7 +168,33 @@ class Store {
   _card = {};
 
   @observable
-  _cards = [];
+  _cards = [
+    {
+      mood: {
+        description: '평온해',
+        bgImage: '/images/mood4.svg',
+        x: null,
+        y: null,
+      },
+      date: '2021-06-10',
+      fileURL: null,
+      text: 'asdasda',
+      id: 1,
+    },
+    {
+      mood: {
+        description: '기분 최고!',
+        bgImage: '/images/mood1.svg',
+        x: null,
+        y: null,
+      },
+      date: '2021-06-11',
+      fileURL:
+        'images/1582721043_blackpink-lot-xac-hoan-toan-trong-du-an-moi-banh-beo-100-2a7106.jpg',
+      text: 'asdasda',
+      id: 2,
+    },
+  ];
 
   @computed
   get card() {
