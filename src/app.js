@@ -6,7 +6,7 @@ import CardMaker from './pages/cardMaker';
 import Home from './pages/home/home';
 import Login from './pages/login/login';
 
-function App({ authService }) {
+function App({ authService, imgUploader }) {
   return (
     <>
       <BrowserRouter>
@@ -21,7 +21,7 @@ function App({ authService }) {
             <CardList />
           </Route>
           <Route path="/card-maker">
-            <CardMaker />
+            <CardMaker imgUploader={imgUploader} />
           </Route>
         </Switch>
       </BrowserRouter>

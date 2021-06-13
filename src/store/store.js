@@ -198,7 +198,7 @@ class Store {
 
   @computed
   get card() {
-    return this._card;
+    return toJS(this._card);
   }
 
   @computed
@@ -222,14 +222,6 @@ class Store {
       ...this._card,
       [name]: value,
     };
-  };
-
-  @observable
-  isModal = false;
-
-  @action
-  onModalClick = () => {
-    this.isModal = !this.isModal;
   };
 
   @computed
@@ -265,6 +257,14 @@ class Store {
   deleteCard = () => {
     const foundIndex = this._cards.findIndex(card => card.id === this._card.id);
     foundIndex >= -1 && this._cards.splice(foundIndex, 1);
+  };
+
+  @observable
+  isModal = false;
+
+  @action
+  onModalClick = () => {
+    this.isModal = !this.isModal;
   };
 
   @observable

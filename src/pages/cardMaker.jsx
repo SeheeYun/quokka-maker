@@ -5,7 +5,8 @@ import CardForm from '../components/cardForm/cardForm';
 import Modal from '../components/modal/modal';
 import { useHistory, useLocation } from 'react-router';
 
-const CardMaker = ({ store }) => {
+const CardMaker = ({ store, imgUploader }) => {
+  console.log(store.card);
   const textRef = useRef();
   const location = useLocation();
   const history = useHistory();
@@ -19,7 +20,7 @@ const CardMaker = ({ store }) => {
     store.onModalClick();
   };
 
-  const onClick = () => {
+  const onDoneClick = () => {
     try {
       location.state.page === 'update' ? store.updateCard() : store.addCard();
       history.push('/');
@@ -27,6 +28,8 @@ const CardMaker = ({ store }) => {
       onModalClick();
     }
   };
+
+  const onUploadClick = () => {};
 
   useEffect(() => {
     textRef.current.focus();
@@ -44,7 +47,7 @@ const CardMaker = ({ store }) => {
   return (
     <>
       {store.isModal && <Modal onModalClick={onModalClick} />}
-      <Header date={store.card.date} onDoneClick={onClick} />
+      <Header date={store.card.date} onDoneClick={onDoneClick} />
       <CardForm
         card={store.card}
         onPropsChange={onChange}
