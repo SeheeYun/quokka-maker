@@ -6,7 +6,6 @@ import Modal from '../components/modal/modal';
 import { useHistory, useLocation } from 'react-router';
 
 const CardMaker = ({ store, imgUploader }) => {
-  console.log(store.card);
   const textRef = useRef();
   const location = useLocation();
   const history = useHistory();
@@ -18,12 +17,12 @@ const CardMaker = ({ store, imgUploader }) => {
   };
 
   const onDoneClick = () => {
-    // try {
-    location.state.page === 'update' ? store.updateCard() : store.addCard();
-    history.push('/');
-    // } catch {
-    //   onModalClick();
-    // }
+    try {
+      location.state.page === 'update' ? store.updateCard() : store.addCard();
+      history.push('/');
+    } catch {
+      onModalClick();
+    }
   };
 
   const onPropsChange = (name, value) => {

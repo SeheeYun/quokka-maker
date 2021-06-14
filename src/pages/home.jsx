@@ -5,7 +5,6 @@ import { useHistory } from 'react-router';
 import HomeContent from '../components/home_content/home_content';
 
 const Home = ({ store, authService }) => {
-  console.log(store.sortedCards);
   const history = useHistory();
 
   const onLoginClick = () => {
@@ -28,7 +27,6 @@ const Home = ({ store, authService }) => {
   };
 
   const onMoodClick = useCallback(mood => {
-    console.log(store.uid);
     if (!store.uid) {
       onLoginClick();
       return;

@@ -64,7 +64,14 @@ const CardForm = ({
           style={{ display: 'none' }}
           onChange={onFileChange}
         />
-        <button className={styles.btn}>이미지 삭제</button>
+        <button
+          className={styles.btn}
+          onClick={() => {
+            onPropsChange('fileURL', '');
+          }}
+        >
+          이미지 삭제
+        </button>
       </div>
     </div>
   );

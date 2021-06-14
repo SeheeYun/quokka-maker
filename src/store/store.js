@@ -184,7 +184,7 @@ class Store {
 
   @computed
   get sortedCards() {
-    return this.cards.sort((a, b) => a.id - b.id);
+    return this.cards.sort((a, b) => a.msDate - b.msDate);
   }
 
   @action
@@ -210,12 +210,17 @@ class Store {
     if (this.isRedundancyDate) {
       throw new Error('중복된 날짜 사용');
     } else {
+      !this._card.fileURL && this.setCardProps('fileURL', '');
       this.setCardProps('id', Date.now());
+      this.setCardProps('msDate', new Date(this._card.date).getTime());
       this._cards.push(this._card);
+      try {
+        cardRepository //
+          .saveCard(this.uid, this.card);
+      } catch (e) {
+        console.log(e);
+      }
     }
-
-    // console.log(this.uid, this.card);
-    // cardRepository.saveCard(this.uid, this.card);
   };
 
   @action
@@ -229,7 +234,13 @@ class Store {
       foundCard.img = this._card.img;
       foundCard.text = this._card.text;
       foundCard.fileURL = this._card.fileURL;
-      foundCard.id = new Date(this._card.date).getTime();
+      foundCard.msDate = new Date(this._card.date).getTime();
+      try {
+        cardRepository //
+          .saveCard(this.uid, this.card);
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
 
@@ -237,6 +248,12 @@ class Store {
   deleteCard = () => {
     const foundIndex = this._cards.findIndex(card => card.id === this._card.id);
     foundIndex >= -1 && this._cards.splice(foundIndex, 1);
+    try {
+      cardRepository //
+        .removeCard(this.uid, this.card);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   @observable
