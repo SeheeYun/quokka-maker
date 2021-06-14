@@ -2,24 +2,9 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import styles from './cardForm.module.css';
 import { TextareaAutosize } from '@material-ui/core';
-import { useState } from 'react';
 
-const CardForm = ({ onPropsChange, card, newDate, textRef }) => {
+const CardForm = ({ card, newDate, textRef, onPropsChange, onFileChange }) => {
   const { date, mood, text, fileURL } = card;
-
-  const [previewURL, setPreviewURL] = useState(null);
-
-  console.log(previewURL);
-  const onFileChange = event => {
-    event.preventDefault();
-
-    let file = event.target.files[0];
-    let reader = new FileReader();
-    reader.onload = () => {
-      setPreviewURL(reader.result);
-    };
-    reader.readAsDataURL(file);
-  };
 
   return (
     <div className={styles.wrap}>
@@ -39,10 +24,10 @@ const CardForm = ({ onPropsChange, card, newDate, textRef }) => {
           alt="img"
         />
         <p className={styles.p}>{mood ? mood.description : ''}</p>
-        {previewURL && (
+        {fileURL && (
           <div className={styles.photo_wrap}>
             <div className={styles.photo}>
-              <img src={previewURL} alt="img" />
+              <img src={fileURL} alt="img" />
             </div>
           </div>
         )}
@@ -56,8 +41,16 @@ const CardForm = ({ onPropsChange, card, newDate, textRef }) => {
         />
       </div>
       <div className={styles.btns}>
-        <input type="file" accept="image/*" onChange={onFileChange} />
-        <button className={styles.btn}>이미지 삽입</button>
+        <label className={styles.btn} htmlFor="input_file">
+          이미지 추가
+        </label>
+        <input
+          type="file"
+          accept="image/*"
+          id="input_file"
+          style={{ display: 'none' }}
+          onChange={onFileChange}
+        />
         <button className={styles.btn}>이미지 삭제</button>
       </div>
     </div>

@@ -4,7 +4,7 @@ class ImgUploader {
     this.uploadPreset = 'az4nvfwn';
   }
 
-  upload(file) {
+  async upload(file) {
     const formdata = new FormData();
     formdata.append('file', file);
     formdata.append('upload_preset', this.uploadPreset);
@@ -12,13 +12,10 @@ class ImgUploader {
     const requestOptions = {
       method: 'POST',
       body: formdata,
-      redirect: 'follow',
     };
 
-    return fetch(this.url, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+    const result = await fetch(this.url, requestOptions);
+    return await result.json();
   }
 }
 
