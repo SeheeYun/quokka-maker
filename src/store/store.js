@@ -210,12 +210,12 @@ class Store {
     if (this.isRedundancyDate) {
       throw new Error('중복된 날짜 사용');
     } else {
-      this.setCardProps('id', new Date(this._card.date));
+      this.setCardProps('id', Date.now());
       this._cards.push(this._card);
     }
 
-    console.log(this.uid, this.card);
-    cardRepository.saveCard(this.uid, this.card);
+    // console.log(this.uid, this.card);
+    // cardRepository.saveCard(this.uid, this.card);
   };
 
   @action
@@ -229,7 +229,7 @@ class Store {
       foundCard.img = this._card.img;
       foundCard.text = this._card.text;
       foundCard.fileURL = this._card.fileURL;
-      foundCard.id = new Date(this._card.date);
+      foundCard.id = new Date(this._card.date).getTime();
     }
   };
 

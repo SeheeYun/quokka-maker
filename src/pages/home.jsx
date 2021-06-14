@@ -1,15 +1,12 @@
 import { inject, observer } from 'mobx-react';
 import React, { useCallback, useEffect } from 'react';
-import styles from './home.module.css';
-import Header from '../../components/header/header';
-import Moods from '../../components/moods/moods';
-import Thumbnails from '../../components/thumbnails/thumbnails';
-import AddRoundedIcon from '@material-ui/icons/AddRounded';
+import Header from '../components/header/header';
 import { useHistory } from 'react-router';
+import HomeContent from '../components/home_content/home_content';
 
 const Home = ({ store, authService }) => {
+  console.log(store.sortedCards);
   const history = useHistory();
-  const rotate = store.isMoods ? styles.rotate : '';
 
   const onLoginClick = () => {
     history.push('/login');
@@ -67,13 +64,11 @@ const Home = ({ store, authService }) => {
         onLogoutClick={onLogoutClick}
         uid={store.uid}
       />
-      <div className={styles.div}>
-        <button className={`${styles.btn} ${rotate}`} onClick={onAddBtnClick}>
-          <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
-        </button>
-        {store.isMoods && <Moods store={store} onMoodClick={onMoodClick} />}
-        <Thumbnails cards={store.sortedCards} />
-      </div>
+      <HomeContent
+        store={store}
+        onMoodClick={onMoodClick}
+        onAddBtnClick={onAddBtnClick}
+      />
     </>
   );
 };
