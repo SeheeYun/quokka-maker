@@ -3,7 +3,14 @@ import React from 'react';
 import styles from './cardForm.module.css';
 import { TextareaAutosize } from '@material-ui/core';
 
-const CardForm = ({ card, newDate, textRef, onPropsChange, onFileChange }) => {
+const CardForm = ({
+  card,
+  newDate,
+  textRef,
+  isLoading,
+  onPropsChange,
+  onFileChange,
+}) => {
   const { date, mood, text, fileURL } = card;
 
   return (
@@ -41,9 +48,15 @@ const CardForm = ({ card, newDate, textRef, onPropsChange, onFileChange }) => {
         />
       </div>
       <div className={styles.btns}>
-        <label className={styles.btn} htmlFor="input_file">
-          이미지 추가
-        </label>
+        {isLoading ? (
+          <div className={styles.btn}>
+            <div className={styles.spinner} />
+          </div>
+        ) : (
+          <label className={styles.btn} htmlFor="input_file">
+            이미지 추가
+          </label>
+        )}
         <input
           type="file"
           accept="image/*"

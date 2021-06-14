@@ -1,5 +1,5 @@
 import { inject, observer } from 'mobx-react';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from '../components/header/header';
 import CardForm from '../components/cardForm/cardForm';
 import Modal from '../components/modal/modal';
@@ -11,6 +11,7 @@ const CardMaker = ({ store, imgUploader }) => {
   const location = useLocation();
   const history = useHistory();
   const newDate = new Date().toISOString().substring(0, 10);
+  const [isLoading, setLoding] = useState(false);
 
   const onModalClick = () => {
     store.onModalClick();
@@ -30,8 +31,15 @@ const CardMaker = ({ store, imgUploader }) => {
   };
 
   const onFileChange = async e => {
-    const uploaded = await imgUploader.upload(e.target.files[0]);
-    onPropsChange('fileURL', uploaded.url);
+    try {
+      setLoding(true);
+      const uploaded = await imgUploader.upload(e.target.files[0]);
+      setLoding(false);
+      onPropsChange('fileURL', uploaded.url);
+    } catch (e) {
+      console.log(e);
+      setLoding(false);
+    }
   };
 
   useEffect(() => {
@@ -55,6 +63,7 @@ const CardMaker = ({ store, imgUploader }) => {
         card={store.card}
         newDate={newDate}
         textRef={textRef}
+        isLoading={isLoading}
         onPropsChange={onPropsChange}
         onFileChange={onFileChange}
       />
