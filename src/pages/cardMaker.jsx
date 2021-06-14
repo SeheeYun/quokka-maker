@@ -18,12 +18,12 @@ const CardMaker = ({ store, imgUploader }) => {
   };
 
   const onDoneClick = () => {
-    try {
-      location.state.page === 'update' ? store.updateCard() : store.addCard();
-      history.push('/');
-    } catch {
-      onModalClick();
-    }
+    // try {
+    location.state.page === 'update' ? store.updateCard() : store.addCard();
+    history.push('/');
+    // } catch {
+    //   onModalClick();
+    // }
   };
 
   const onPropsChange = (name, value) => {
@@ -34,8 +34,8 @@ const CardMaker = ({ store, imgUploader }) => {
     try {
       setLoding(true);
       const uploaded = await imgUploader.upload(e.target.files[0]);
-      setLoding(false);
       onPropsChange('fileURL', uploaded.url);
+      setLoding(false);
     } catch (e) {
       console.log(e);
       setLoding(false);

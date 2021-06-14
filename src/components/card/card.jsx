@@ -27,7 +27,7 @@ const Card = ({ store, card, onUpdateClick, onDeleteClick }) => {
         {fileURL && (
           <div className={styles.photo_wrap}>
             <div className={styles.photo}>
-              <img src={process.env.PUBLIC_URL + fileURL} alt="img" />
+              <img src={fileURL} alt="img" />
             </div>
           </div>
         )}

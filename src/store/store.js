@@ -1,5 +1,7 @@
 import { action, computed, makeObservable, observable, toJS } from 'mobx';
+import CardRepository from '../service/card_repository';
 
+const cardRepository = new CardRepository();
 class Store {
   constructor() {
     makeObservable(this);
@@ -168,33 +170,7 @@ class Store {
   _card = {};
 
   @observable
-  _cards = [
-    {
-      mood: {
-        description: '평온해',
-        bgImage: '/images/mood4.svg',
-        x: null,
-        y: null,
-      },
-      date: '2021-06-10',
-      fileURL: null,
-      text: 'asdasda',
-      id: 1,
-    },
-    {
-      mood: {
-        description: '기분 최고!',
-        bgImage: '/images/mood1.svg',
-        x: null,
-        y: null,
-      },
-      date: '2021-06-11',
-      fileURL:
-        'images/1582721043_blackpink-lot-xac-hoan-toan-trong-du-an-moi-banh-beo-100-2a7106.jpg',
-      text: 'asdasda',
-      id: 2,
-    },
-  ];
+  _cards = [];
 
   @computed
   get card() {
@@ -237,6 +213,9 @@ class Store {
       this.setCardProps('id', new Date(this._card.date));
       this._cards.push(this._card);
     }
+
+    console.log(this.uid, this.card);
+    cardRepository.saveCard(this.uid, this.card);
   };
 
   @action
@@ -249,6 +228,7 @@ class Store {
       foundCard.date = this._card.date;
       foundCard.img = this._card.img;
       foundCard.text = this._card.text;
+      foundCard.fileURL = this._card.fileURL;
       foundCard.id = new Date(this._card.date);
     }
   };
