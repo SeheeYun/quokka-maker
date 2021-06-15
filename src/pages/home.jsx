@@ -54,6 +54,15 @@ const Home = ({ store, authService }) => {
       });
   }, []);
 
+  useEffect(() => {
+    if (!store.uid) {
+      return;
+    }
+
+    store.setCards();
+    return () => store.setCards();
+  }, [store.uid]);
+
   return (
     <>
       <Header

@@ -215,8 +215,7 @@ class Store {
       this.setCardProps('msDate', new Date(this._card.date).getTime());
       this._cards.push(this._card);
       try {
-        cardRepository //
-          .saveCard(this.uid, this.card);
+        cardRepository.saveCard(this.uid, this.card);
       } catch (e) {
         console.log(e);
       }
@@ -236,8 +235,7 @@ class Store {
       foundCard.fileURL = this._card.fileURL;
       foundCard.msDate = new Date(this._card.date).getTime();
       try {
-        cardRepository //
-          .saveCard(this.uid, this.card);
+        cardRepository.saveCard(this.uid, this.card);
       } catch (e) {
         console.log(e);
       }
@@ -249,11 +247,18 @@ class Store {
     const foundIndex = this._cards.findIndex(card => card.id === this._card.id);
     foundIndex >= -1 && this._cards.splice(foundIndex, 1);
     try {
-      cardRepository //
-        .removeCard(this.uid, this.card);
+      cardRepository.removeCard(this.uid, this.card);
     } catch (e) {
       console.log(e);
     }
+  };
+
+  @action
+  setCards = () => {
+    cardRepository.syncCards(this.uid, data => {
+      console.log(data);
+    });
+    return () => cardRepository.syncCards();
   };
 
   @observable
