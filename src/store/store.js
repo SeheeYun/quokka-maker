@@ -1,4 +1,11 @@
-import { action, computed, makeObservable, observable, toJS } from 'mobx';
+import {
+  action,
+  computed,
+  makeObservable,
+  observable,
+  runInAction,
+  toJS,
+} from 'mobx';
 import CardRepository from '../service/card_repository';
 
 const cardRepository = new CardRepository();
@@ -170,7 +177,7 @@ class Store {
   _card = {};
 
   @observable
-  _cards = [];
+  _cards = {};
 
   @computed
   get card() {
@@ -180,11 +187,6 @@ class Store {
   @computed
   get cards() {
     return toJS(this._cards);
-  }
-
-  @computed
-  get sortedCards() {
-    return this.cards.sort((a, b) => a.msDate - b.msDate);
   }
 
   @action
@@ -202,61 +204,50 @@ class Store {
 
   @computed
   get isRedundancyDate() {
-    return this._cards.some(card => card.date === this._card.date);
+    return Object.keys(this.cards).some(
+      key => this.cards[key].date === this._card.date
+    );
   }
 
   @action
   addCard = () => {
     if (this.isRedundancyDate) {
-      throw new Error('중복된 날짜 사용');
+      throw new Error('isRedundant');
     } else {
       !this._card.fileURL && this.setCardProps('fileURL', '');
       this.setCardProps('id', Date.now());
       this.setCardProps('msDate', new Date(this._card.date).getTime());
-      this._cards.push(this._card);
-      try {
-        cardRepository.saveCard(this.uid, this.card);
-      } catch (e) {
-        console.log(e);
-      }
+      cardRepository.saveCard(this.uid, this.card);
     }
   };
 
   @action
   updateCard = () => {
-    const foundCard = this._cards.find(card => card.id === this._card.id);
-    if (foundCard.date !== this._card.date && this.isRedundancyDate) {
-      throw new Error('중복된 날짜 사용');
+    const foundCardId = Object.keys(this._cards).find(
+      key => this._cards[key].id === this._card.id
+    );
+    if (
+      this._cards[foundCardId].date !== this._card.date &&
+      this.isRedundancyDate
+    ) {
+      throw new Error('isRedundant');
     } else {
-      foundCard.mood = this._card.mood;
-      foundCard.date = this._card.date;
-      foundCard.img = this._card.img;
-      foundCard.text = this._card.text;
-      foundCard.fileURL = this._card.fileURL;
-      foundCard.msDate = new Date(this._card.date).getTime();
-      try {
-        cardRepository.saveCard(this.uid, this.card);
-      } catch (e) {
-        console.log(e);
-      }
+      this.setCardProps('msDate', new Date(this._card.date).getTime());
+      cardRepository.saveCard(this.uid, this.card);
     }
   };
 
   @action
   deleteCard = () => {
-    const foundIndex = this._cards.findIndex(card => card.id === this._card.id);
-    foundIndex >= -1 && this._cards.splice(foundIndex, 1);
-    try {
-      cardRepository.removeCard(this.uid, this.card);
-    } catch (e) {
-      console.log(e);
-    }
+    cardRepository.removeCard(this.uid, this.card);
   };
 
   @action
   setCards = () => {
     cardRepository.syncCards(this.uid, data => {
-      console.log(data);
+      runInAction(() => {
+        this._cards = data;
+      });
     });
     return () => cardRepository.syncCards();
   };

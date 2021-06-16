@@ -5,8 +5,11 @@ class CardRepository {
   syncCards(userId, onUpdate) {
     const ref = firebaseApp.database().ref(`${userId}/cards`);
     ref.orderByChild('msDate').on('value', snapshot => {
-      const data = snapshot.val();
-      data && onUpdate(data);
+      let data = {};
+      snapshot.forEach(child => {
+        data = { ...data, [child.val().id]: child.val() };
+      });
+      Object.keys(data).length > 0 && onUpdate(data);
     });
 
     return () => ref.off();

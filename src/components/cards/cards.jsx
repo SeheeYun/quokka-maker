@@ -5,12 +5,12 @@ import Card from '../card/card';
 
 const Cards = ({ store, onUpdateClick, onDeleteClick }) => (
   <ul className={styles.ul}>
-    {store.sortedCards.length > 0 &&
-      store.sortedCards.map(card => (
+    {store.cards &&
+      Object.keys(store.cards).map(key => (
         <Card
           store={store}
-          card={card}
-          key={card.id}
+          card={store.cards[key]}
+          key={key}
           onUpdateClick={onUpdateClick}
           onDeleteClick={onDeleteClick}
         />

@@ -20,8 +20,12 @@ const CardMaker = ({ store, imgUploader }) => {
     try {
       location.state.page === 'update' ? store.updateCard() : store.addCard();
       history.push('/');
-    } catch {
-      onModalClick();
+    } catch (e) {
+      if (e.message === 'isRedundant') {
+        onModalClick();
+        return;
+      }
+      console.log(e);
     }
   };
 

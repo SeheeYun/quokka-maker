@@ -5,10 +5,11 @@ import { observer } from 'mobx-react';
 
 const Thumbnails = ({ cards }) => (
   <ul className={styles.ul}>
-    {cards.length > 0 &&
-      cards.map(card => {
+    {cards &&
+      Object.keys(cards).map(key => {
+        const card = cards[key];
         return (
-          <li className={styles.li} key={card.id}>
+          <li className={styles.li} key={key}>
             <HashLink
               to={'/card-list#' + card.id}
               scroll={el => el.scrollIntoView({ block: 'center' })}
