@@ -2,6 +2,12 @@
 
 :root {
   --bg-color: #fff7e7;
+  --moods-wrap-bg-gardient: linear-gradient(
+    180deg,
+    rgba(255, 247, 231, 0) 0%,
+    rgba(255, 247, 231, 0.7091211484593838) 20%,
+    rgba(255, 247, 231, 1) 45%
+  );
   --blue-color: rgb(143, 182, 255);
   --box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
     0 1px 5px 0 rgb(0 0 0 / 12%);

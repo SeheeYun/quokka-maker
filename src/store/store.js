@@ -204,8 +204,8 @@ class Store {
 
   @computed
   get isRedundancyDate() {
-    return Object.keys(this.cards).some(
-      key => this.cards[key].date === this._card.date
+    return Object.keys(this._cards).some(
+      key => this._cards[key].date === this._card.date
     );
   }
 
@@ -261,11 +261,19 @@ class Store {
   };
 
   @observable
-  headerDate = null;
+  _headerDate = null;
+
+  @computed
+  get headerDate() {
+    if (Object.keys(this._cards).length === 0) {
+      return null;
+    }
+    return this._headerDate;
+  }
 
   @action
   setHeaderDate = date => {
-    this.headerDate = date;
+    this._headerDate = date;
   };
 
   @observable

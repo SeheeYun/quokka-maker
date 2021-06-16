@@ -40,7 +40,7 @@ const Header = ({
       >
         <ArrowBackIosRoundedIcon fontSize="small" />
       </button>
-      <div className={styles.year}>{getDate(date)}</div>
+      <div className={styles.year}>{date ? getDate(date) : ''}</div>
       <button
         onClick={onDoneClick}
         style={{ visibility: page === 'card-list' && 'hidden' }}

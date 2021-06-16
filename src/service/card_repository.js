@@ -9,7 +9,7 @@ class CardRepository {
       snapshot.forEach(child => {
         data = { ...data, [child.val().id]: child.val() };
       });
-      Object.keys(data).length > 0 && onUpdate(data);
+      onUpdate(data);
     });
 
     return () => ref.off();

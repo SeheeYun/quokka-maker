@@ -5,7 +5,14 @@
   display: flex;
   justify-content: center;
   user-select: none;
-  /* cursor: grab; */
+  cursor: grab;
+  background: rgb(255, 247, 231);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 247, 231, 0.21052170868347342) 0%,
+    rgba(255, 247, 231, 0.6867121848739496) 26%,
+    rgba(255, 247, 231, 1) 61%
+  );
 }
 
 .moods {

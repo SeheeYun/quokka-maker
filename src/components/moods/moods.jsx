@@ -7,10 +7,10 @@ import useMatchMedia from '../../hooks/useMatchMedia';
 const Moods = ({ store, onMoodClick }) => {
   const requestRef = useRef();
 
-  const animate = useCallback(() => {
+  const animate = () => {
     store.setRotate();
     requestRef.current = requestAnimationFrame(animate);
-  }, [store]);
+  };
 
   useEffect(() => {
     requestRef.current = requestAnimationFrame(animate);
