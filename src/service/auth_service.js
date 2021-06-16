@@ -1,5 +1,9 @@
-import firebase from 'firebase/app';
-import firebaseApp from './firebaseInit';
+import {
+  firebaseAuth,
+  emailProvider,
+  googleProvider,
+  githubProvider,
+} from './firebaseInit';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
 
@@ -7,16 +11,9 @@ class AuthService {
   constructor() {
     this.uiConfig = {
       signInSuccessUrl: '/',
-      signInOptions: [
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.GithubAuthProvider.PROVIDER_ID,
-      ],
-      // callbacks: {
-      //   signInSuccessWithAuthResult: () => false,
-      // },
+      signInOptions: [emailProvider, googleProvider, githubProvider],
     };
-    this.ui = new firebaseui.auth.AuthUI(firebaseApp.auth());
+    this.ui = new firebaseui.auth.AuthUI(firebaseAuth);
   }
 
   login(elementId) {
@@ -24,11 +21,11 @@ class AuthService {
   }
 
   logout() {
-    return firebaseApp.auth().signOut();
+    return firebaseAuth.signOut();
   }
 
   onAuthStateChanged(onUserChanged) {
-    firebaseApp.auth().onAuthStateChanged(user => {
+    firebaseAuth.onAuthStateChanged(user => {
       onUserChanged(user);
     });
   }
