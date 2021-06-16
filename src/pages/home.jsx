@@ -58,9 +58,8 @@ const Home = ({ store, authService }) => {
     if (!store.uid) {
       return;
     }
-
-    store.setCards();
-    return () => store.setCards();
+    const stopCard = store.setCards();
+    return () => stopCard();
   }, [store.uid]);
 
   return (

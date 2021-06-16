@@ -3,6 +3,7 @@ import React from 'react';
 import Header from '../components/header/header';
 import Cards from '../components/cards/cards';
 import { useHistory } from 'react-router';
+import { useEffect } from 'react';
 
 const CardList = ({ store }) => {
   const history = useHistory();
@@ -20,6 +21,11 @@ const CardList = ({ store }) => {
     store.deleteCard();
     store.setCard({});
   };
+
+  useEffect(() => {
+    const stopCard = store.setCards();
+    return () => stopCard();
+  }, []);
 
   return (
     <>
