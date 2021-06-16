@@ -2,7 +2,7 @@ import { inject, observer } from 'mobx-react';
 import React, { useEffect, useRef, useState } from 'react';
 import Header from '../components/header/header';
 import CardForm from '../components/cardForm/cardForm';
-import Modal from '../components/modal/modal';
+import Modal from '../components/cardMaker_modal/modal';
 import { useHistory, useLocation } from 'react-router';
 
 const CardMaker = ({ store, imgUploader }) => {

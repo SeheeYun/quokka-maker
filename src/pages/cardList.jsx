@@ -4,9 +4,14 @@ import Header from '../components/header/header';
 import Cards from '../components/cards/cards';
 import { useHistory } from 'react-router';
 import { useEffect } from 'react';
+import Modal from '../components/cardList_modal/modal';
 
 const CardList = ({ store }) => {
   const history = useHistory();
+
+  const onModalClick = () => {
+    store.onModalClick();
+  };
 
   const onUpdateClick = card => {
     store.setCard(card);
@@ -18,6 +23,11 @@ const CardList = ({ store }) => {
 
   const onDeleteClick = card => {
     store.setCard(card);
+    onModalClick();
+  };
+
+  const onDeleteClickModal = () => {
+    onModalClick();
     store.deleteCard();
     store.setCard({});
   };
@@ -40,6 +50,12 @@ const CardList = ({ store }) => {
         onUpdateClick={onUpdateClick}
         onDeleteClick={onDeleteClick}
       />
+      {store.isModal && (
+        <Modal
+          onModalClick={onModalClick}
+          onDeleteClickModal={onDeleteClickModal}
+        />
+      )}
     </>
   );
 };
