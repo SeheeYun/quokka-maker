@@ -5,7 +5,6 @@ class CardRepository {
   syncCards(userId, onUpdate) {
     const ref = firebaseApp.database().ref(`${userId}/cards`);
     ref.orderByChild('msDate').on('value', snapshot => {
-      console.log('asds');
       let data = {};
       snapshot.forEach(child => {
         data = { ...data, [child.val().id]: child.val() };

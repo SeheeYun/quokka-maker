@@ -22,6 +22,10 @@ const CardList = ({ store }) => {
     store.setCard({});
   };
 
+  const setHeaderDate = date => {
+    store.setHeaderDate(date);
+  };
+
   useEffect(() => {
     const stopCard = store.setCards();
     return () => stopCard();
@@ -31,7 +35,8 @@ const CardList = ({ store }) => {
     <>
       <Header date={store.headerDate} page={'card-list'} />
       <Cards
-        store={store}
+        cards={store.cards}
+        setHeaderDate={setHeaderDate}
         onUpdateClick={onUpdateClick}
         onDeleteClick={onDeleteClick}
       />

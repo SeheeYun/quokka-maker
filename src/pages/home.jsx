@@ -14,9 +14,6 @@ const Home = ({ store, authService }) => {
   const onLogoutClick = () => {
     authService //
       .logout()
-      .then(() => {
-        console.log('ok');
-      })
       .catch(e => {
         console.log(e);
       });
@@ -55,9 +52,6 @@ const Home = ({ store, authService }) => {
   }, []);
 
   useEffect(() => {
-    if (!store.uid) {
-      return;
-    }
     const stopCard = store.setCards();
     return () => stopCard();
   }, [store.uid]);

@@ -5,13 +5,13 @@ import styles from './card.module.css';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
 
-const Card = ({ store, card, onUpdateClick, onDeleteClick }) => {
+const Card = ({ card, setHeaderDate, onUpdateClick, onDeleteClick }) => {
   const { id, mood, text, fileURL } = card;
 
   const { isloaded, itemRef } = useIntersectionObserver();
 
   useEffect(() => {
-    isloaded && store.setHeaderDate(card.date);
+    isloaded && setHeaderDate(card.date);
   }, [isloaded]);
 
   return (

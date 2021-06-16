@@ -3,14 +3,14 @@ import React from 'react';
 import styles from './cards.module.css';
 import Card from '../card/card';
 
-const Cards = ({ store, onUpdateClick, onDeleteClick }) => (
+const Cards = ({ cards, setHeaderDate, onUpdateClick, onDeleteClick }) => (
   <ul className={styles.ul}>
-    {store.cards &&
-      Object.keys(store.cards).map(key => (
+    {cards &&
+      Object.keys(cards).map(key => (
         <Card
-          store={store}
-          card={store.cards[key]}
+          card={cards[key]}
           key={key}
+          setHeaderDate={setHeaderDate}
           onUpdateClick={onUpdateClick}
           onDeleteClick={onDeleteClick}
         />

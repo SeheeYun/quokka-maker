@@ -244,6 +244,10 @@ class Store {
 
   @action
   setCards = () => {
+    if (!this.uid) {
+      this._cards = {};
+    }
+
     const stopCard = cardRepository.syncCards(this.uid, data => {
       runInAction(() => {
         this._cards = data;
