@@ -4,6 +4,7 @@ import Header from '../components/header/header';
 import CardForm from '../components/cardForm/cardForm';
 import Modal from '../components/cardMaker_modal/modal';
 import { useHistory, useLocation } from 'react-router';
+import { useCallback } from 'react';
 
 const CardMaker = ({ store, imgUploader }) => {
   const textRef = useRef();
@@ -16,7 +17,7 @@ const CardMaker = ({ store, imgUploader }) => {
     store.onModalClick();
   };
 
-  const onDoneClick = () => {
+  const onDoneClick = useCallback(() => {
     try {
       location.state.page === 'update' ? store.updateCard() : store.addCard();
       history.push('/');
@@ -27,13 +28,13 @@ const CardMaker = ({ store, imgUploader }) => {
       }
       console.log(e);
     }
-  };
+  }, []);
 
-  const onPropsChange = (name, value) => {
+  const onPropsChange = useCallback((name, value) => {
     store.setCardProps(name, value);
-  };
+  }, []);
 
-  const onFileChange = async e => {
+  const onFileChange = useCallback(async e => {
     try {
       setLoding(true);
       const uploaded = await imgUploader.upload(e.target.files[0]);
@@ -43,7 +44,7 @@ const CardMaker = ({ store, imgUploader }) => {
       console.log(e);
       setLoding(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     textRef.current.focus();
