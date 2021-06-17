@@ -12,6 +12,7 @@ const CardMaker = ({ store, imgUploader }) => {
   const history = useHistory();
   const newDate = new Date().toISOString().substring(0, 10);
   const [isLoading, setLoding] = useState(false);
+  const page = location.state ? location.state.page : '';
 
   const onModalClick = () => {
     store.onModalClick();
@@ -19,7 +20,7 @@ const CardMaker = ({ store, imgUploader }) => {
 
   const onDoneClick = useCallback(() => {
     try {
-      location.state.page === 'update' ? store.updateCard() : store.addCard();
+      page === 'update' ? store.updateCard() : store.addCard();
       history.push('/');
     } catch (e) {
       if (e.message === 'isRedundant') {
@@ -49,14 +50,18 @@ const CardMaker = ({ store, imgUploader }) => {
   useEffect(() => {
     textRef.current.focus();
 
-    if (location.state.page === 'update') {
-      store.setCard(location.state && location.state.card);
-    }
-    if (location.state.page === 'add') {
-      const mood = location.state && location.state.mood;
-      const date = newDate;
-      onPropsChange('mood', mood);
-      onPropsChange('date', date);
+    switch (page) {
+      case 'update':
+        store.setCard(location.state.card);
+        break;
+      case 'add':
+        const mood = location.state.mood;
+        const date = newDate;
+        onPropsChange('mood', mood);
+        onPropsChange('date', date);
+        break;
+      default:
+        history.push('/');
     }
 
     return () => store.setCard({});
