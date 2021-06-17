@@ -14,10 +14,9 @@ const CardList = ({ store }) => {
   };
 
   const onUpdateClick = card => {
-    store.setCard(card);
     history.push({
       pathname: '/card-maker',
-      state: { page: 'update' },
+      state: { page: 'update', card: card },
     });
   };
 
@@ -29,7 +28,6 @@ const CardList = ({ store }) => {
   const onDeleteClickModal = () => {
     onModalClick();
     store.deleteCard();
-    store.setCard({});
   };
 
   const setHeaderDate = date => {
@@ -38,7 +36,11 @@ const CardList = ({ store }) => {
 
   useEffect(() => {
     const stopCard = store.setCards();
-    return () => stopCard();
+
+    return () => {
+      stopCard();
+      store.setCard({});
+    };
   }, []);
 
   return (

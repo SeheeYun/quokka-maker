@@ -1,18 +1,15 @@
 .wrap {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
   display: flex;
   justify-content: center;
   user-select: none;
   cursor: grab;
-  background: rgb(255, 247, 231);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 247, 231, 0.21052170868347342) 0%,
-    rgba(255, 247, 231, 0.6867121848739496) 26%,
-    rgba(255, 247, 231, 1) 61%
-  );
+  background: var(--bg-color-opacity);
 }
 
 .moods {

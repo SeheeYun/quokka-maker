@@ -48,8 +48,11 @@ const CardMaker = ({ store, imgUploader }) => {
   useEffect(() => {
     textRef.current.focus();
 
+    if (location.state.page === 'update') {
+      store.setCard(location.state && location.state.card);
+    }
     if (location.state.page === 'add') {
-      const mood = location.state ? location.state.mood : '';
+      const mood = location.state && location.state.mood;
       const date = newDate;
       onPropsChange('mood', mood);
       onPropsChange('date', date);
