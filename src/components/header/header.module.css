@@ -13,12 +13,10 @@
 }
 
 .logo {
-  background-color: var(--blue-color);
+  display: block;
   width: 90px;
-  padding: 0 5px;
+  height: 30px;
   transform: rotate(-3deg);
-  text-transform: uppercase;
-  font-weight: 700;
 }
 
 .year {

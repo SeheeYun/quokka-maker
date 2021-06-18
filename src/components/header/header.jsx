@@ -21,7 +21,11 @@ const Header = ({
   return page === 'home' ? (
     <header className={styles.header}>
       <button style={({ visibility: 'hidden' }, { width: '36px' })}></button>
-      <div className={styles.logo}>quokka</div>
+      <img
+        className={styles.logo}
+        src={process.env.PUBLIC_URL + 'logo.png'}
+        alt="logo"
+      />
       {isLoaded ? (
         uid ? (
           <button onClick={onLogoutClick}>
