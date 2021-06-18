@@ -60,9 +60,10 @@ const Home = ({ store, authService }) => {
     <>
       <Header
         page={'home'}
+        uid={store.uid}
+        isLoaded={store.isLoaded}
         onLoginClick={onLoginClick}
         onLogoutClick={onLogoutClick}
-        uid={store.uid}
       />
       <HomeContent
         store={store}

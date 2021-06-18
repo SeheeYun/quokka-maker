@@ -10,10 +10,11 @@ import { useHistory } from 'react-router';
 const Header = ({
   page,
   date,
+  isLoaded,
+  uid,
   onDoneClick,
   onLoginClick,
   onLogoutClick,
-  uid,
 }) => {
   const history = useHistory();
 
@@ -21,14 +22,18 @@ const Header = ({
     <header className={styles.header}>
       <button style={({ visibility: 'hidden' }, { width: '36px' })}></button>
       <div className={styles.logo}>quokka</div>
-      {uid ? (
-        <button onClick={onLogoutClick}>
-          <MeetingRoomRoundedIcon />
-        </button>
+      {isLoaded ? (
+        uid ? (
+          <button onClick={onLogoutClick}>
+            <MeetingRoomRoundedIcon />
+          </button>
+        ) : (
+          <button onClick={onLoginClick}>
+            <ExitToAppRoundedIcon />
+          </button>
+        )
       ) : (
-        <button onClick={onLoginClick}>
-          <ExitToAppRoundedIcon />
-        </button>
+        <div className={styles.skeleton}></div>
       )}
     </header>
   ) : (

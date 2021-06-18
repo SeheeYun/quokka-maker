@@ -12,12 +12,17 @@
   text-align: center;
   cursor: pointer;
 }
-.li > a {
-  height: 100%;
-}
 .li img {
   width: 100%;
   height: 100%;
+}
+
+.skeleton {
+  margin: 0 auto;
+  width: var(--home-card-size);
+  height: var(--home-card-size);
+  background-color: var(--light-gray-color);
+  border-radius: 50%;
 }
 
 @media screen and (max-width: 767px) {
@@ -25,7 +30,6 @@
     max-width: calc(100% / 8);
   }
 }
-
 @media screen and (max-width: 576px) {
   .li {
     max-width: calc(100% / 5);

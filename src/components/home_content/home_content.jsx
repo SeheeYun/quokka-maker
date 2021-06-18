@@ -14,7 +14,7 @@ const HomeContent = ({ store, onMoodClick, onAddBtnClick }) => {
         <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
       </button>
       {store.isMoods && <Moods store={store} onMoodClick={onMoodClick} />}
-      <Thumbnails cards={store.cards} />
+      <Thumbnails cards={store.cards} isLoaded={store.isLoaded} />
     </div>
   );
 };

@@ -4,8 +4,8 @@
   --bg-color: #fff7e7;
   --bg-color-opacity: #fff7e7a1;
   --blue-color: rgb(143, 182, 255);
-  --box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
-    0 1px 5px 0 rgb(0 0 0 / 12%);
+  --light-gray-color: #dddddd;
+  --box-shadow: 0 2px 2px 2px rgb(0 0 0 / 13%);
   --add-btn-size: 64px;
   --add-btn-bottom: 40px;
   --moods-bottom: 55px;

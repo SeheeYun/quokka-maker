@@ -252,6 +252,7 @@ class Store {
       runInAction(() => {
         this._cards = data;
       });
+      this.setLoaded(true);
     });
 
     return () => stopCard();
@@ -259,7 +260,6 @@ class Store {
 
   @observable
   isModal = false;
-
   @action
   onModalClick = () => {
     this.isModal = !this.isModal;
@@ -267,7 +267,6 @@ class Store {
 
   @observable
   _headerDate = null;
-
   @computed
   get headerDate() {
     if (Object.keys(this._cards).length === 0) {
@@ -275,7 +274,6 @@ class Store {
     }
     return this._headerDate;
   }
-
   @action
   setHeaderDate = date => {
     this._headerDate = date;
@@ -283,10 +281,16 @@ class Store {
 
   @observable
   uid = null;
-
   @action
   setUid = uid => {
     this.uid = uid;
+  };
+
+  @observable
+  isLoaded = false;
+  @action
+  setLoaded = loaded => {
+    this.isLoaded = loaded;
   };
 }
 
