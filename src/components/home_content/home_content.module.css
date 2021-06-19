@@ -14,7 +14,7 @@
   width: var(--add-btn-size);
   height: var(--add-btn-size);
   border-radius: 50%;
-  z-index: 11;
+  z-index: 13;
   background-color: #303030;
   padding-top: 1px;
   transition: 200ms ease-in-out;

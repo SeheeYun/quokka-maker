@@ -9,11 +9,11 @@ const Mood = ({ store: { rotate, isToggleClick }, mood, onMoodClick }) => (
       isToggleClick
         ? {
             transform: `translate(${mood.x}px,${mood.y}px)`,
-            transition: '200ms cubic-bezier(0.165, 0.84, 0.44, 1)',
+            transition: '250ms cubic-bezier(0.165, 0.84, 0.44, 1)',
           }
         : {
             transform: 'translate(0,0)',
-            transition: '200ms cubic-bezier(0.6, -0.28, 0.735, 0.045) ',
+            transition: '250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) ',
           }
     }
   >

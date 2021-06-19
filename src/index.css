@@ -4,13 +4,17 @@
   --bg-color: #fff7e7;
   --bg-color-opacity: #fff7e7a1;
   --blue-color: rgb(143, 182, 255);
+  --dark-blue-color: rgb(62, 130, 255);
   --light-gray-color: #dddddd;
-  --box-shadow: 0 2px 2px 2px rgb(0 0 0 / 13%);
+  --box-shadow: 0 2px 5px 0px rgb(0 0 0 / 20%);
+  --border-radius: 10px;
   --add-btn-size: 64px;
   --add-btn-bottom: 40px;
   --moods-bottom: 55px;
   --mood-btn-size: 75px;
   --home-card-size: 75px;
+  --tooltip-bottom: 260px;
+  --tooltip-font-size: 0.833em;
 }
 
 @media screen and (max-width: 767px) {
@@ -20,6 +24,7 @@
     --moods-bottom: 40px;
     --mood-btn-size: 58px;
     --home-card-size: 58px;
+    --tooltip-bottom: 200px;
   }
 }
 

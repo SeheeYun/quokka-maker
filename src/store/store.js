@@ -153,7 +153,7 @@ class Store {
       this.setToggleClick();
       setTimeout(() => {
         this.setMoods();
-      }, 200);
+      }, 250);
     }
   };
 
@@ -169,7 +169,7 @@ class Store {
       this.toggleClick();
       setTimeout(() => {
         this.isDisableClick = false;
-      }, 300);
+      }, 500);
     }
   };
 
