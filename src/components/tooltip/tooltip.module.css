@@ -1,21 +1,43 @@
 .wrap {
-  display: flex;
-  justify-content: center;
+  position: fixed;
+  z-index: 11;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgb(0, 0, 0, 0.5);
+  opacity: 0;
+  user-select: none;
+}
+.wrap.on {
+  animation: fadeIn 0.5s ease forwards;
+}
+.wrap.off {
+  animation: fadeOut 0.5s ease;
+}
+.wrap.none {
+  display: none;
 }
 
 .tooltip {
   position: absolute;
-  z-index: 13;
-  padding: 16px;
+  left: calc(50% - (210px / 2));
+  bottom: var(--tooltip-bottom);
+  width: 210px;
+  padding: 20px 0;
   background-color: var(--dark-blue-color);
   color: #ffffff;
   text-align: center;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  font-size: var(--tooltip-font-size);
-  line-height: 1.4em;
-  user-select: none;
-  opacity: 0;
+  font-size: 0.833em;
+  line-height: 1.3rem;
+}
+.tooltip.on {
+  animation: up 0.5s ease;
+}
+.tooltip.off {
+  animation: down 0.5s ease forwards;
 }
 .tooltip:after {
   border-bottom: 0px solid transparent;
@@ -31,33 +53,26 @@
   margin-bottom: 16px;
 }
 
-.tooltip_1.none,
-.tooltip_2.none {
-  display: none;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-.tooltip_1 {
-  bottom: calc(var(--tooltip-bottom));
-}
-.tooltip_1.on_tooltip_1 {
-  animation: up 0.5s ease forwards;
-}
-.tooltip_1.off_tooltip_1 {
-  animation: down 0.5s ease forwards;
-}
-
-.tooltip_2 {
-  bottom: calc(var(--tooltip-bottom));
-}
-.tooltip_2.on_tooltip_2 {
-  animation: up 0.5s ease forwards;
-}
-.tooltip_2.off_tooltip_2 {
-  animation: down 0.5s ease forwards;
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes up {
   0% {
-    transform: translateY(20px);
+    transform: translateY(30px);
     opacity: 0;
   }
   100% {
@@ -67,7 +82,7 @@
 }
 @keyframes down {
   100% {
-    transform: translateY(20px);
+    transform: translateY(30px);
     opacity: 0;
   }
   0% {

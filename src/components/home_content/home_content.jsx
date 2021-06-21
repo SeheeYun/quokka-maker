@@ -11,7 +11,7 @@ const HomeContent = ({ store, onMoodClick, onAddBtnClick }) => {
 
   return (
     <div className={styles.wrap}>
-      {!store.uid && <Tooltip toggleClick={store.toggleClick} />}
+      {!store.uid && <Tooltip />}
       <button className={`${styles.btn} ${rotate}`} onClick={onAddBtnClick}>
         <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
       </button>

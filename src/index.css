@@ -13,8 +13,7 @@
   --moods-bottom: 55px;
   --mood-btn-size: 75px;
   --home-card-size: 75px;
-  --tooltip-bottom: 260px;
-  --tooltip-font-size: 0.833em;
+  --tooltip-bottom: 160px;
 }
 
 @media screen and (max-width: 767px) {
@@ -24,7 +23,7 @@
     --moods-bottom: 40px;
     --mood-btn-size: 58px;
     --home-card-size: 58px;
-    --tooltip-bottom: 200px;
+    --tooltip-bottom: 120px;
   }
 }
 

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import styles from './tooltip.module.css';
 
-const Tooltip = ({ toggleClick }) => {
+const Tooltip = () => {
   const [className, setClassName] = useState();
   const timerRef = useRef();
 
@@ -20,11 +20,9 @@ const Tooltip = ({ toggleClick }) => {
   }
 
   useEffect(() => {
-    delay(() => setClassName(styles.on_tooltip_1), 2000) //
-      .then(() => delay(() => toggleClick(), 1000))
-      .then(() => delay(() => setClassName(styles.off_tooltip_1), 3000))
-      .then(() => delay(() => setClassName(styles.on_tooltip_2), 2000))
-      .then(() => delay(() => setClassName(styles.off_tooltip_2), 3000))
+    setClassName(styles.none);
+    delay(() => setClassName(styles.on), 2000)
+      .then(() => delay(() => setClassName(styles.off), 4000))
       .then(() => delay(() => setClassName(styles.none), 500));
 
     return () => clearTimeout(timerRef.current);
@@ -32,7 +30,7 @@ const Tooltip = ({ toggleClick }) => {
 
   return (
     <div className={`${styles.wrap} ${className}`}>
-      <div className={`${styles.tooltip} ${styles.tooltip_1} ${className}`}>
+      <div className={`${styles.tooltip} ${className}`}>
         <p>
           버튼을 누르면
           <br />
@@ -42,18 +40,6 @@ const Tooltip = ({ toggleClick }) => {
           '좌우로 드래그'해서
           <br />
           움직여보세요!
-        </p>
-      </div>
-      <div className={`${styles.tooltip} ${styles.tooltip_2} ${className}`}>
-        <p>
-          감정을 선택하고
-          <br />
-          일기를 작성합니다.
-        </p>
-        <p>
-          아직 로그인하지 않았다면
-          <br />
-          로그인 페이지로 넘어갑니다.
         </p>
       </div>
     </div>
