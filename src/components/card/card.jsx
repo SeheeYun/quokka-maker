@@ -31,7 +31,7 @@ const Card = ({ card, setHeaderDate, onUpdateClick, onDeleteClick }) => {
             </div>
           </div>
         )}
-        <p className={styles.text}>{text}</p>
+        <pre className={styles.text}>{text}</pre>
       </div>
       <div className={styles.btns}>
         <button className={styles.btn} onClick={() => onUpdateClick(card)}>
