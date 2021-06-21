@@ -2,6 +2,8 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import styles from './mood.module.css';
 
+const TRANSITION_DURATION = 250;
+
 const Mood = ({ store: { rotate, isToggleClick }, mood, onMoodClick }) => (
   <div
     className={styles.mood}
@@ -9,11 +11,11 @@ const Mood = ({ store: { rotate, isToggleClick }, mood, onMoodClick }) => (
       isToggleClick
         ? {
             transform: `translate(${mood.x}px,${mood.y}px)`,
-            transition: '250ms cubic-bezier(0.165, 0.84, 0.44, 1)',
+            transition: `${TRANSITION_DURATION}ms cubic-bezier(0.165, 0.84, 0.44, 1)`,
           }
         : {
             transform: 'translate(0,0)',
-            transition: '250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) ',
+            transition: `${TRANSITION_DURATION}ms cubic-bezier(0.6, -0.28, 0.735, 0.045)`,
           }
     }
   >

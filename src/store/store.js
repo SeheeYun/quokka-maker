@@ -8,6 +8,13 @@ import {
 } from 'mobx';
 import CardRepository from '../service/card_repository';
 
+const RADIUS = 130;
+const MOBILE_RADIUS = 100;
+const MOVE_X = 0.82;
+const ROTATE = 0.008;
+const TRANSITION_DURATION = 250;
+const DISABLE_DURATION = 500;
+
 const cardRepository = new CardRepository();
 class Store {
   constructor() {
@@ -73,7 +80,7 @@ class Store {
 
   @action
   translateMoods = isMatches => {
-    const radius = isMatches ? 100 : 130;
+    const radius = isMatches ? MOBILE_RADIUS : RADIUS;
 
     const moodsIndex = this._moods.length;
     const PI2 = Math.PI * 2;
@@ -122,8 +129,8 @@ class Store {
 
   @action
   setRotate = () => {
-    this.moveX *= 0.82;
-    this.rotate += this.moveX * 0.008;
+    this.moveX *= MOVE_X;
+    this.rotate += this.moveX * ROTATE;
   };
 
   @observable
@@ -153,7 +160,7 @@ class Store {
       this.setToggleClick();
       setTimeout(() => {
         this.setMoods();
-      }, 250);
+      }, TRANSITION_DURATION);
     }
   };
 
@@ -169,7 +176,7 @@ class Store {
       this.toggleClick();
       setTimeout(() => {
         this.isDisableClick = false;
-      }, 500);
+      }, DISABLE_DURATION);
     }
   };
 
