@@ -14,6 +14,11 @@ const CardList = ({ store }) => {
   };
 
   const onUpdateClick = card => {
+    if (!store.uid) {
+      history.push('/login');
+      return;
+    }
+
     history.push({
       pathname: '/card-maker',
       state: { page: 'update', card: card },
@@ -21,6 +26,11 @@ const CardList = ({ store }) => {
   };
 
   const onDeleteClick = card => {
+    if (!store.uid) {
+      history.push('/login');
+      return;
+    }
+
     store.setCard(card);
     onModalClick();
   };

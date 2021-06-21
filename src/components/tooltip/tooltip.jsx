@@ -21,7 +21,7 @@ const Tooltip = () => {
 
   useEffect(() => {
     setClassName(styles.none);
-    delay(() => setClassName(styles.on), 2000)
+    delay(() => setClassName(styles.on), 3000)
       .then(() => delay(() => setClassName(styles.off), 4000))
       .then(() => delay(() => setClassName(styles.none), 500));
 
