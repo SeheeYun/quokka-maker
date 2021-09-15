@@ -86,8 +86,8 @@ class Store {
     const PI2 = Math.PI * 2;
     const angle = PI2 / moodsIndex;
 
-    this._moods = this._moods.map(mood => {
-      const i = this._moods.indexOf(mood);
+    this._moods = this._moods.map((mood, index) => {
+      const i = index;
       const x = radius * Math.cos(angle * i);
       const y = radius * Math.sin(angle * i);
 
