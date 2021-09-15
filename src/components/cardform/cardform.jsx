@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import styles from './cardForm.module.css';
+import styles from './cardform.module.css';
 import { TextareaAutosize } from '@material-ui/core';
 
-const CardForm = ({
+const Cardform = ({
   card,
   newDate,
   textRef,
@@ -77,4 +77,4 @@ const CardForm = ({
   );
 };
 
-export default observer(CardForm);
+export default observer(Cardform);

@@ -10,6 +10,7 @@ import 'firebaseui/dist/firebaseui.css';
 class AuthService {
   constructor() {
     this.uiConfig = {
+      signInFlow: 'popup',
       signInSuccessUrl: '/',
       signInOptions: [emailProvider, googleProvider, githubProvider],
     };

@@ -1,7 +1,7 @@
 import { inject, observer } from 'mobx-react';
 import React, { useEffect, useRef, useState } from 'react';
 import Header from '../components/header/header';
-import CardForm from '../components/cardForm/cardForm';
+import Cardform from '../components/cardform/cardform';
 import Modal from '../components/cardMaker_modal/modal';
 import { useHistory, useLocation } from 'react-router';
 import { useCallback } from 'react';
@@ -71,7 +71,7 @@ const CardMaker = ({ store, imgUploader }) => {
     <>
       {store.isModal && <Modal onModalClick={onModalClick} />}
       <Header date={store.card.date} onDoneClick={onDoneClick} />
-      <CardForm
+      <Cardform
         card={store.card}
         newDate={newDate}
         textRef={textRef}

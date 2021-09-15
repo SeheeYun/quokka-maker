@@ -15,7 +15,7 @@ const Moods = ({ store, onMoodClick }) => {
   useEffect(() => {
     requestRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(requestRef.current);
-  }, [animate]);
+  }, []);
 
   const { isMatches } = useMatchMedia('767');
 
@@ -34,9 +34,9 @@ const Moods = ({ store, onMoodClick }) => {
         className={styles.moods}
         style={{ transform: `rotate(${store.rotate}rad)` }}
       >
-        {store.moods.map(mood => (
+        {store.moods.map((mood, index) => (
           <Mood
-            key={store.moods.indexOf(mood)}
+            key={index}
             mood={mood}
             store={store}
             onMoodClick={onMoodClick}
