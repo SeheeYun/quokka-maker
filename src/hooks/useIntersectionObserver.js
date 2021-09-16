@@ -15,7 +15,7 @@ function useIntersectionObserver() {
             setIsLoaded(false);
           }
         },
-        { threshold: 1 }
+        { threshold: 0.8 }
       );
 
       io.observe(itemRef.current);

@@ -1,7 +1,6 @@
-.wrap {
-  width: 100%;
-  min-height: calc(100vh - 80px);
-  margin-top: 80px;
+.wrapper {
+  height: calc(100% - 60px);
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
