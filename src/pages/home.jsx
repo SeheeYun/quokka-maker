@@ -56,6 +56,14 @@ const Home = ({ store, authService }) => {
     return () => stopCard();
   }, [store.uid]);
 
+  useEffect(() => {
+    const images = store.moods.map(mood => mood.bgImage);
+    images.map(image => {
+      const img = new Image();
+      img.src = process.env.PUBLIC_URL + image;
+    });
+  }, []);
+
   return (
     <>
       <Header

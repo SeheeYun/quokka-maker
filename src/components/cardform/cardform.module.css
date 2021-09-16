@@ -1,6 +1,10 @@
-.wrap {
-  min-height: calc(100vh - 80px);
-  margin-top: 80px;
+.wrapper {
+  height: calc(100% - 60px);
+  overflow: auto;
+  padding-top: 20px;
+}
+.wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .div {
@@ -93,6 +97,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .btns {
   display: flex;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 .btn {
