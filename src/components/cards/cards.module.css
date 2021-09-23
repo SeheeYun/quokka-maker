@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 .ul {
   min-height: calc(100vh - 80px);
   padding: 0 16px;
-=======
-.wrapper {
-  height: calc(100% - 60px);
-  overflow: auto;
-  padding-top: 20px;
->>>>>>> main
 }
