@@ -67,6 +67,7 @@ textarea {
 .btns {
   display: flex;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 .btn {

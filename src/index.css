@@ -37,6 +37,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  background-color: var(--bg-color);
+  background-image: url('/src/line.svg');
+  padding: 0 16px;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
