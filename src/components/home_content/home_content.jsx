@@ -9,7 +9,7 @@ const HomeContent = ({ store, onMoodClick, onAddBtnClick }) => {
   const rotate = store.isMoods ? styles.rotate : '';
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrap}>
       <button className={`${styles.btn} ${rotate}`} onClick={onAddBtnClick}>
         <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
       </button>

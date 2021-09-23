@@ -8,7 +8,7 @@ const Login = ({ authService }) => {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrap}>
       <div className={styles.modal}>
         <img src={process.env.PUBLIC_URL + '/images/mood3.svg'} alt="img" />
         <p>WELCOME!</p>
