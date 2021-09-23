@@ -3,6 +3,7 @@
 :root {
   --bg-color: #fff7e7;
   --bg-color-opacity: #fff7e7a1;
+  --black-color: #222222;
   --blue-color: rgb(143, 182, 255);
   --dark-blue-color: rgb(62, 130, 255);
   --light-gray-color: #dddddd;
@@ -25,12 +26,12 @@
   }
 }
 
-html {
-  font-size: 24px;
-}
-
+html,
 body {
+  font-size: 24px;
+  color: var(--black-color);
   margin: 0;
+  padding: 0;
   font-family: 'Gaegu', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -60,6 +61,7 @@ ol {
 }
 
 button {
+  color: inherit;
   background: none;
   border-style: none;
   cursor: pointer;
@@ -71,9 +73,7 @@ textarea {
 }
 
 #root {
+  width: 100%;
   background-color: var(--bg-color);
   background-image: url('/src/line.svg');
-  padding: 0 16px;
-  overflow: hidden;
-  position: relative;
 }
