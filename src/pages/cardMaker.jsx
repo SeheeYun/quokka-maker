@@ -10,7 +10,6 @@ const CardMaker = ({ store, imgUploader }) => {
   const textRef = useRef();
   const location = useLocation();
   const history = useHistory();
-  const newDate = new Date().toISOString().substring(0, 10);
   const [isLoading, setLoding] = useState(false);
   const page = location.state ? location.state.page : '';
 
@@ -56,7 +55,7 @@ const CardMaker = ({ store, imgUploader }) => {
         break;
       case 'add':
         const mood = location.state.mood;
-        const date = newDate;
+        const date = new Date().toISOString().substring(0, 10);
         onPropsChange('mood', mood);
         onPropsChange('date', date);
         break;
@@ -73,7 +72,6 @@ const CardMaker = ({ store, imgUploader }) => {
       <Header date={store.card.date} onDoneClick={onDoneClick} />
       <Cardform
         card={store.card}
-        newDate={newDate}
         textRef={textRef}
         isLoading={isLoading}
         onPropsChange={onPropsChange}

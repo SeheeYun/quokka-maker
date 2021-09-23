@@ -1,10 +1,6 @@
-.wrapper {
-  height: calc(100% - 60px);
-  overflow: auto;
-  padding-top: 20px;
-}
-.wrapper::-webkit-scrollbar {
-  display: none;
+.wrap {
+  min-height: calc(100vh - 80px);
+  padding: 0 16px;
 }
 
 .div {
@@ -59,9 +55,6 @@ textarea {
 }
 
 .date {
-  align-self: flex-start;
-  position: absolute;
-  top: 20px;
   width: 36px;
   font-size: 20px;
   font-family: inherit;
@@ -69,29 +62,6 @@ textarea {
   border-bottom: solid 2px;
   text-align: center;
   padding: 3px;
-}
-input[type='date']::-webkit-datetime-edit-text {
-  -webkit-appearance: none;
-  display: none;
-}
-input[type='date']::-webkit-datetime-edit-month-field {
-  -webkit-appearance: none;
-  display: none;
-}
-input[type='date']::-webkit-datetime-edit-year-field {
-  -webkit-appearance: none;
-  display: none;
-}
-input[type='date']::-webkit-calendar-picker-indicator {
-  position: absolute;
-  top: 0;
-  left: -25px;
-  right: 0;
-  bottom: 0;
-  width: auto;
-  height: auto;
-  background: transparent;
-  cursor: pointer;
 }
 
 .btns {

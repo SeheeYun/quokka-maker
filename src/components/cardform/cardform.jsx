@@ -2,10 +2,11 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import styles from './cardform.module.css';
 import { TextareaAutosize } from '@material-ui/core';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const Cardform = ({
   card,
-  newDate,
   textRef,
   isLoading,
   onPropsChange,
@@ -16,13 +17,16 @@ const Cardform = ({
   return (
     <div className={styles.wrapper}>
       <div className={styles.div}>
-        <input
-          type="date"
-          max={newDate}
+        <DatePicker
           className={styles.date}
-          defaultValue={date ? date : ''}
-          onChange={e => {
-            onPropsChange('date', e.target.value);
+          dateFormat="dd"
+          selected={date && new Date(date)}
+          maxDate={new Date()}
+          onChange={date => {
+            onPropsChange(
+              'date',
+              new Date(date).toISOString().substring(0, 10)
+            );
           }}
         />
         <img

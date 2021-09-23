@@ -1,9 +1,11 @@
-.wrapper {
-  height: calc(100% - 60px);
-  padding-top: 20px;
+.wrap {
+  width: 100%;
+  height: calc(100vh - 80px);
+  padding: 0 16px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
 }
 
 .btn {
