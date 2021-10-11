@@ -11,7 +11,7 @@
   margin-bottom: 20px;
   z-index: 9;
   background-color: var(--bg-color);
-  background-image: url('/src/line.svg');
+  background-image: var(--bg-image);
 }
 
 .logo {

@@ -3,6 +3,7 @@
 :root {
   --bg-color: #fff7e7;
   --bg-color-opacity: #fff7e7a1;
+  --bg-image: url('/src/line.svg');
   --black-color: #222222;
   --blue-color: rgb(143, 182, 255);
   --dark-blue-color: rgb(62, 130, 255);
@@ -75,5 +76,5 @@ textarea {
 #root {
   width: 100%;
   background-color: var(--bg-color);
-  background-image: url('/src/line.svg');
+  background-image: var(--bg-image);
 }

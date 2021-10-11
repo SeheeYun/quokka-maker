@@ -1,10 +1,16 @@
 import { inject, observer } from 'mobx-react';
 import React, { useCallback, useEffect } from 'react';
-import Header from '../components/header/header';
+import Header from '../../components/header/header';
+import Moods from '../../components/moods/moods';
+import Thumbnails from '../../components/thumbnails/thumbnails';
+import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import { useHistory } from 'react-router';
-import HomeContent from '../components/home_content/home_content';
+
+import styles from './home.module.css';
 
 const Home = ({ store, authService }) => {
+  const rotate = store.isMoods ? styles.rotate : '';
+
   const history = useHistory();
 
   const onLoginClick = () => {
@@ -73,11 +79,13 @@ const Home = ({ store, authService }) => {
         onLoginClick={onLoginClick}
         onLogoutClick={onLogoutClick}
       />
-      <HomeContent
-        store={store}
-        onMoodClick={onMoodClick}
-        onAddBtnClick={onAddBtnClick}
-      />
+      <div className={styles.wrap}>
+        <button className={`${styles.btn} ${rotate}`} onClick={onAddBtnClick}>
+          <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
+        </button>
+        {store.isMoods && <Moods store={store} onMoodClick={onMoodClick} />}
+        <Thumbnails cards={store.cards} isLoaded={store.isLoaded} />
+      </div>
     </>
   );
 };
