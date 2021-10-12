@@ -3,44 +3,12 @@ import React from 'react';
 import styles from './header.module.css';
 import DoneRoundedIcon from '@material-ui/icons/DoneRounded';
 import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
-import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
-import MeetingRoomRoundedIcon from '@material-ui/icons/MeetingRoomRounded';
 import { useHistory } from 'react-router';
 
-const Header = ({
-  page,
-  date,
-  isLoaded,
-  uid,
-  onDoneClick,
-  onLoginClick,
-  onLogoutClick,
-}) => {
+const Header = ({ page, date, onDoneClick }) => {
   const history = useHistory();
 
-  return page === 'home' ? (
-    <header className={styles.header}>
-      <button style={({ visibility: 'hidden' }, { width: '36px' })}></button>
-      <img
-        className={styles.logo}
-        src={process.env.PUBLIC_URL + 'logo.png'}
-        alt="logo"
-      />
-      {isLoaded ? (
-        uid ? (
-          <button onClick={onLogoutClick}>
-            <MeetingRoomRoundedIcon />
-          </button>
-        ) : (
-          <button onClick={onLoginClick}>
-            <ExitToAppRoundedIcon />
-          </button>
-        )
-      ) : (
-        <div className={styles.skeleton}></div>
-      )}
-    </header>
-  ) : (
+  return (
     <header className={styles.header}>
       <button
         onClick={() => {

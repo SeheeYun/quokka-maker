@@ -10,7 +10,7 @@ import CardRepository from '../service/card_repository';
 
 const RADIUS = 130;
 const MOBILE_RADIUS = 100;
-const MOVE_X = 0.82;
+const MOVE_X = 0.88;
 const ROTATE = 0.008;
 const TRANSITION_DURATION = 250;
 const DISABLE_DURATION = 500;
@@ -107,15 +107,15 @@ class Store {
     if (this.isMoods) {
       this.isDown = true;
       this.moveX = 0;
-      this.offsetX = e.clientX;
+      this.offsetX = e.clientX || e.touches[0].clientX;
     }
   };
 
   @action
   onPointerMove = e => {
     if (this.isDown) {
-      this.moveX = e.clientX - this.offsetX;
-      this.offsetX = e.clientX;
+      this.moveX = (e.clientX || e.touches[0].clientX) - this.offsetX;
+      this.offsetX = e.clientX || e.touches[0].clientX;
     }
   };
 

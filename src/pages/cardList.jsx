@@ -54,7 +54,7 @@ const CardList = ({ store }) => {
 
   return (
     <>
-      <Header date={store.headerDate} page={'card-list'} />
+      <Header date={store.headerDate} />
       <Cards
         cards={store.cards}
         setHeaderDate={setHeaderDate}

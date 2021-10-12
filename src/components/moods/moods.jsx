@@ -29,6 +29,9 @@ const Moods = ({ store, onMoodClick }) => {
       onPointerDown={e => store.onPointerDown(e)}
       onPointerMove={e => store.onPointerMove(e)}
       onPointerUp={e => store.onPointerUp(e)}
+      onTouchStart={e => store.onPointerDown(e)}
+      onTouchMove={e => store.onPointerMove(e)}
+      onTouchEnd={e => store.onPointerUp(e)}
     >
       <div
         className={styles.moods}
