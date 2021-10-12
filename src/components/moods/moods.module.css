@@ -9,7 +9,8 @@
   justify-content: center;
   user-select: none;
   cursor: grab;
-  background: var(--bg-color-opacity);
+  background-color: var(--bg-color-opacity);
+  background-image: var(--bg-image);
 }
 
 .moods {

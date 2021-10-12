@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './app.css';
 import CardList from './pages/cardList';
 import CardMaker from './pages/cardMaker';
-import Home from './pages/home';
+import Home from './pages/home/home';
 import Login from './pages/login/login';
 
 function App({ authService, imgUploader }) {

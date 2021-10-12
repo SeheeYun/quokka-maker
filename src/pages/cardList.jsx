@@ -9,10 +9,6 @@ import Modal from '../components/cardList_modal/modal';
 const CardList = ({ store }) => {
   const history = useHistory();
 
-  const onModalClick = () => {
-    store.onModalClick();
-  };
-
   const onUpdateClick = card => {
     if (!store.uid) {
       history.push('/login');
@@ -35,8 +31,11 @@ const CardList = ({ store }) => {
     onModalClick();
   };
 
+  const onModalClick = () => {
+    store.onModalClick();
+  };
+
   const onDeleteClickModal = () => {
-    onModalClick();
     store.deleteCard();
   };
 
