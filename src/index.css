@@ -75,6 +75,8 @@ textarea {
 
 #root {
   width: 100%;
+  min-height: 100vh;
+  padding: 0 16px;
   background-color: var(--bg-color);
   background-image: var(--bg-image);
 }

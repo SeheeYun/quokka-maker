@@ -1,8 +1,8 @@
 import { inject, observer } from 'mobx-react';
 import React, { useEffect, useRef, useState } from 'react';
-import Header from '../components/header/header';
+import Header from '../components/header_card/header';
 import Cardform from '../components/cardform/cardform';
-import Modal from '../components/cardMaker_modal/modal';
+import Modal from '../components/modal_cardMaker/modal';
 import { useHistory, useLocation } from 'react-router';
 import { useCallback } from 'react';
 

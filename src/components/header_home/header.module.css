@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 20px;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+}
+
+.logo {
+  display: block;
+  width: 90px;
+  height: 30px;
+  transform: rotate(-3deg);
+}
+
+.skeleton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--light-gray-color);
+}

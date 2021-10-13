@@ -1,6 +1,6 @@
 import { inject, observer } from 'mobx-react';
 import React, { useCallback, useEffect } from 'react';
-import Header from '../../components/header/header';
+import Header from '../../components/header_home/header';
 import Moods from '../../components/moods/moods';
 import Thumbnails from '../../components/thumbnails/thumbnails';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
@@ -71,22 +71,20 @@ const Home = ({ store, authService }) => {
   }, []);
 
   return (
-    <>
+    <div className={styles.wrap}>
       <Header
-        page={'home'}
+        page="home"
         uid={store.uid}
         isLoaded={store.isLoaded}
         onLoginClick={onLoginClick}
         onLogoutClick={onLogoutClick}
       />
-      <div className={styles.wrap}>
-        <button className={`${styles.btn} ${rotate}`} onClick={onAddBtnClick}>
-          <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
-        </button>
-        {store.isMoods && <Moods store={store} onMoodClick={onMoodClick} />}
-        <Thumbnails cards={store.cards} isLoaded={store.isLoaded} />
-      </div>
-    </>
+      <button className={`${styles.btn} ${rotate}`} onClick={onAddBtnClick}>
+        <AddRoundedIcon style={{ color: 'var(--bg-color)' }} />
+      </button>
+      {store.isMoods && <Moods store={store} onMoodClick={onMoodClick} />}
+      <Thumbnails cards={store.cards} isLoaded={store.isLoaded} />
+    </div>
   );
 };
 

@@ -1,21 +1,12 @@
 import { observer } from 'mobx-react';
 import React from 'react';
 import styles from './header.module.css';
-import DoneRoundedIcon from '@material-ui/icons/DoneRounded';
-import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import MeetingRoomRoundedIcon from '@material-ui/icons/MeetingRoomRounded';
+import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
 import { useHistory } from 'react-router';
 
-const Header = ({
-  page,
-  date,
-  isLoaded,
-  uid,
-  onDoneClick,
-  onLoginClick,
-  onLogoutClick,
-}) => {
+const Header = ({ page, isLoaded, uid, onLoginClick, onLogoutClick }) => {
   const history = useHistory();
 
   return page === 'home' ? (
@@ -49,37 +40,14 @@ const Header = ({
       >
         <ArrowBackIosRoundedIcon fontSize="small" />
       </button>
-      <div className={styles.year}>{date ? getDate(date) : ''}</div>
-      <button
-        onClick={onDoneClick}
-        style={{ visibility: page === 'card-list' && 'hidden' }}
-      >
-        <DoneRoundedIcon />
-      </button>
+      <img
+        className={styles.logo}
+        src={process.env.PUBLIC_URL + 'logo.png'}
+        alt="logo"
+      />
+      <button style={({ visibility: 'hidden' }, { width: '30px' })}></button>
     </header>
   );
 };
-
-function getDate(date) {
-  const monthNames = [
-    '',
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  const month = date && date.substring(5, 7).replace(/^0/, '');
-  const year = date && date.substring(0, 4);
-
-  return `${monthNames[month]} ${year}`;
-}
 
 export default observer(Header);
