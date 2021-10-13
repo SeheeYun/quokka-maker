@@ -20,7 +20,7 @@ const Header = ({ page, date, onDoneClick }) => {
       <div className={styles.year}>{date ? getDate(date) : ''}</div>
       <button
         onClick={onDoneClick}
-        style={{ visibility: page === 'card-list' && 'hidden' }}
+        style={{ visibility: page === '/card-list' && 'hidden' }}
       >
         <DoneRoundedIcon />
       </button>

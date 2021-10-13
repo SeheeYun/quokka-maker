@@ -15,7 +15,7 @@ const Cardform = ({
   const { date, mood, text, fileURL } = card;
 
   return (
-    <div className={styles.wrap}>
+    <>
       <div className={styles.div}>
         <DatePicker
           className={styles.date}
@@ -77,7 +77,7 @@ const Cardform = ({
           이미지 삭제
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

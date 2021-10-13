@@ -1,6 +1,6 @@
 import { inject, observer } from 'mobx-react';
 import React, { useCallback, useEffect } from 'react';
-import Header from '../../components/home_header/header';
+import Header from '../../components/header_home/header';
 import Moods from '../../components/moods/moods';
 import Thumbnails from '../../components/thumbnails/thumbnails';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
@@ -73,6 +73,7 @@ const Home = ({ store, authService }) => {
   return (
     <div className={styles.wrap}>
       <Header
+        page="home"
         uid={store.uid}
         isLoaded={store.isLoaded}
         onLoginClick={onLoginClick}

@@ -1,10 +1,10 @@
 import { inject, observer } from 'mobx-react';
 import React from 'react';
-import Header from '../components/header/header';
-import Cards from '../components/cards/cards';
+import Header from '../components/header_card/header';
+import Cards from '../components/cards';
 import { useHistory } from 'react-router';
 import { useEffect } from 'react';
-import Modal from '../components/cardList_modal/modal';
+import Modal from '../components/modal_cardList/modal';
 
 const CardList = ({ store }) => {
   const history = useHistory();
@@ -54,7 +54,7 @@ const CardList = ({ store }) => {
 
   return (
     <>
-      <Header date={store.headerDate} />
+      <Header page={history.location.pathname} date={store.headerDate} />
       <Cards
         cards={store.cards}
         setHeaderDate={setHeaderDate}
