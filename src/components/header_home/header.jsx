@@ -14,7 +14,7 @@ const Header = ({ page, isLoaded, uid, onLoginClick, onLogoutClick }) => {
       <button style={({ visibility: 'hidden' }, { width: '36px' })}></button>
       <img
         className={styles.logo}
-        src={process.env.PUBLIC_URL + 'logo.png'}
+        src={process.env.PUBLIC_URL + '/images/logo.png'}
         alt="logo"
       />
       {isLoaded ? (
@@ -42,7 +42,7 @@ const Header = ({ page, isLoaded, uid, onLoginClick, onLogoutClick }) => {
       </button>
       <img
         className={styles.logo}
-        src={process.env.PUBLIC_URL + 'logo.png'}
+        src={process.env.PUBLIC_URL + '/images/logo.png'}
         alt="logo"
       />
       <button style={({ visibility: 'hidden' }, { width: '30px' })}></button>
