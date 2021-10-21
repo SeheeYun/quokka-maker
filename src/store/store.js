@@ -230,11 +230,8 @@ class Store {
 
   @action
   updateCard = () => {
-    const foundCardId = Object.keys(this._cards).find(
-      key => this._cards[key].id === this._card.id
-    );
     if (
-      this._cards[foundCardId].date !== this._card.date &&
+      this._cards[this._card.id].date !== this._card.date &&
       this.isRedundancyDate
     ) {
       throw new Error('isRedundant');
