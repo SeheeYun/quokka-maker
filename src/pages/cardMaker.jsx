@@ -1,5 +1,5 @@
 import { inject, observer } from 'mobx-react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/header_card/header';
 import Cardform from '../components/cardform/cardform';
 import Modal from '../components/modal_cardMaker/modal';
@@ -7,7 +7,6 @@ import { useHistory, useLocation } from 'react-router';
 import { useCallback } from 'react';
 
 const CardMaker = ({ store, imgUploader }) => {
-  const textRef = useRef();
   const location = useLocation();
   const history = useHistory();
   const [isLoading, setLoding] = useState(false);
@@ -47,8 +46,6 @@ const CardMaker = ({ store, imgUploader }) => {
   }, []);
 
   useEffect(() => {
-    textRef.current.focus();
-
     switch (page) {
       case 'update':
         store.setCard(location.state.card);
@@ -72,7 +69,6 @@ const CardMaker = ({ store, imgUploader }) => {
       <Header date={store.card.date} onDoneClick={onDoneClick} />
       <Cardform
         card={store.card}
-        textRef={textRef}
         isLoading={isLoading}
         onPropsChange={onPropsChange}
         onFileChange={onFileChange}

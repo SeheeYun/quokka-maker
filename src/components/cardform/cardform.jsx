@@ -5,13 +5,7 @@ import { TextareaAutosize } from '@material-ui/core';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const Cardform = ({
-  card,
-  textRef,
-  isLoading,
-  onPropsChange,
-  onFileChange,
-}) => {
+const Cardform = ({ card, isLoading, onPropsChange, onFileChange }) => {
   const { date, mood, text, fileURL } = card;
 
   return (
@@ -43,7 +37,7 @@ const Cardform = ({
           </div>
         )}
         <TextareaAutosize
-          ref={textRef}
+          autoFocus
           spellCheck="false"
           value={text ? text : ''}
           onChange={e => {
