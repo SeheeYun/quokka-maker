@@ -248,14 +248,14 @@ class Store {
 
   @action
   setCards = () => {
-    const stopCard = cardRepository.syncCards(this.uid, data => {
+    const stopCards = cardRepository.syncCards(this.uid, data => {
       runInAction(() => {
         this._cards = data;
       });
       this.setLoaded(true);
     });
 
-    return () => stopCard();
+    return () => stopCards();
   };
 
   @observable

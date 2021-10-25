@@ -6,18 +6,18 @@ import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
 
 const Card = ({ card, setHeaderDate, onUpdateClick, onDeleteClick }) => {
-  const { id, mood, text, fileURL } = card;
+  const { id, mood, text, fileURL, date } = card;
 
   const { isloaded, itemRef } = useIntersectionObserver();
 
   useEffect(() => {
-    isloaded && setHeaderDate(card.date);
+    isloaded && setHeaderDate(date);
   }, [isloaded]);
 
   return (
     <li className={styles.li} id={id}>
       <div className={styles.div} ref={itemRef}>
-        <div className={styles.date}>{card.date.substring(8, 11)}</div>
+        <div className={styles.date}>{date.substring(8, 11)}</div>
         <img
           draggable="false"
           src={process.env.PUBLIC_URL + mood.bgImage}

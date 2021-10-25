@@ -58,8 +58,8 @@ const Home = ({ store, authService }) => {
   }, []);
 
   useEffect(() => {
-    const stopCard = store.setCards();
-    return () => stopCard();
+    const stopCards = store.setCards();
+    return () => stopCards();
   }, [store.uid]);
 
   useEffect(() => {

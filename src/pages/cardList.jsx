@@ -44,10 +44,10 @@ const CardList = ({ store }) => {
   };
 
   useEffect(() => {
-    const stopCard = store.setCards();
+    const stopCards = store.setCards();
 
     return () => {
-      stopCard();
+      stopCards();
       store.setCard({});
     };
   }, []);
